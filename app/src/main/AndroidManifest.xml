@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoLavacar">
         <activity
+            android:name=".FacturaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServicioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CarroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmpleadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ClienteActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
