@@ -16,9 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class ServicioActivity extends AppCompatActivity {
-    EditText txtIdServicio, txtNombreServicio, txtPrecioServicio;
-    ListView listServicios;
-    ImageButton  btnAgregarServicio, btnEditarServicio, btnEliminarServicio, btnRegresarServicio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +27,5 @@ public class ServicioActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        txtIdServicio = findViewById(R.id.txtIdServicio);
-        txtNombreServicio = findViewById(R.id.txtNombreServicio);
-        txtPrecioServicio = findViewById(R.id.txtPrecioServicio);
-
-        btnAgregarServicio = findViewById(R.id.btnAgregarServicio); btnEditarServicio = findViewById(R.id.btnEditarServicio); btnEliminarServicio = findViewById(R.id.btnEliminarServicio);
-        btnRegresarServicio = findViewById(R.id.btnRegresarServicio);
     }
-
 }

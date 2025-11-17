@@ -4,99 +4,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp">
 
+    <!-- Título -->
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tvTitleCarros"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:fontFamily="@font/abril_fatface"
-        android:gravity="center"
         android:padding="10dp"
-        android:text="Mantenimiento de Carros"
-        android:textSize="22sp"
+        android:text="Carros"
+        android:textSize="24sp"
         android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/txtPlaca"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Placa" />
-
-    <EditText
-        android:id="@+id/txtModelo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Modelo" />
-
-    <EditText
-        android:id="@+id/txtAno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Año"
-        android:inputType="number" />
-
-    <ListView
-        android:id="@+id/listCarros"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="10dp" />
+    <!--Busqueda-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/txtBuscarCarro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Buscar por placa"
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/btnBuscarCarro"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_buscar"
+            android:contentDescription="Buscar"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+
+    <!-- Listado de carros -->
+    <ListView
+        android:id="@+id/listViewCarros"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="10dp" />
+
+    <!-- Botones inferiores -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:paddingTop="10dp">
 
         <ImageButton
-            android:id="@+id/btnAgregar"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="Agregar"
-            android:padding="8dp"
-            android:src="@drawable/ic_agregar" />
-
-        <ImageButton
-            android:id="@+id/btnEditar"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="14dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="Editar"
-            android:padding="8dp"
-            android:src="@drawable/ic_editar" />
-
-        <ImageButton
-            android:id="@+id/btnEliminar"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="14dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="Eliminar"
-            android:padding="8dp"
-            android:src="@drawable/ic_eliminar" />
-
-        <ImageButton
-            android:id="@+id/btnBuscar"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="14dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="Buscar"
-            android:padding="8dp"
-            android:src="@drawable/ic_buscar" />
-
-        <ImageButton
-            android:id="@+id/btnRegresar"
-            android:layout_width="60dp"
+            android:id="@+id/btnAgregarCarro"
+            android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_gravity="center"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:padding="10dp"
-            android:src="@drawable/ic_regresar" />
+            android:src="@drawable/ic_agregar"
+            android:contentDescription="Agregar" />
 
+        <ImageButton
+            android:id="@+id/btnEditarCarro"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_editar"
+            android:contentDescription="Editar" />
+
+        <ImageButton
+            android:id="@+id/btnEliminarCarro"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_eliminar"
+            android:contentDescription="Eliminar" />
+
+        <ImageButton
+            android:id="@+id/btnSalirCarro"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_regresar"
+            android:contentDescription="Salir" />
     </LinearLayout>
 
 </LinearLayout>

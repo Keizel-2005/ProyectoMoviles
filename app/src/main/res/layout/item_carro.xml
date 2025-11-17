@@ -1,27 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/txtItemPlaca"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/imgCarro"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_carro"
+        android:padding="5dp" />
 
-    <TextView
-        android:id="@+id/txtItemModelo"
-        android:textSize="14sp"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="15dp">
 
-    <TextView
-        android:id="@+id/txtItemAno"
-        android:textSize="14sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtPlaca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Placa: 123ABC"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/txtModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modelo: Toyota Yaris"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/txtAnno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Año: 2015"
+            android:textSize="14sp"/>
+    </LinearLayout>
 
 </LinearLayout>
