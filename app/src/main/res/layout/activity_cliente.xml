@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,35 +11,35 @@
         android:id="@+id/tvTitleClientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
         android:text="Clientes"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:padding="10dp"/>
+        android:textStyle="bold" />
 
     <!-- Sección de búsqueda -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/txtBuscarCliente"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Buscar por placa"
+            android:hint="Buscar "
             android:padding="10dp" />
 
         <ImageButton
             android:id="@+id/btnBuscarCliente"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginStart="10dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_buscar"
             android:contentDescription="Buscar"
-            android:layout_marginStart="10dp"/>
+            android:src="@drawable/ic_buscar" />
     </LinearLayout>
 
     <!-- Listado de clientes -->
@@ -47,14 +48,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:dividerHeight="10dp"/>
+        android:dividerHeight="10dp" />
 
     <!-- Botones inferiores con iconos -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         android:paddingTop="10dp">
 
         <ImageButton
@@ -63,8 +64,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_agregar"
-            android:contentDescription="Agregar" />
+            android:contentDescription="Agregar"
+            android:src="@drawable/ic_agregar" />
 
         <ImageButton
             android:id="@+id/btnEditarCliente"
@@ -72,8 +73,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_editar"
-            android:contentDescription="Editar" />
+            android:contentDescription="Editar"
+            android:src="@drawable/ic_editar" />
 
         <ImageButton
             android:id="@+id/btnEliminarCliente"
@@ -81,8 +82,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_eliminar"
-            android:contentDescription="Eliminar" />
+            android:contentDescription="Eliminar"
+            android:src="@drawable/ic_eliminar" />
 
         <ImageButton
             android:id="@+id/btnSalirCliente"
@@ -90,8 +91,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_regresar"
-            android:contentDescription="Salir" />
+            android:contentDescription="Salir"
+            android:src="@drawable/ic_regresar" />
     </LinearLayout>
 
 </LinearLayout>

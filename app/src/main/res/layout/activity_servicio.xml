@@ -4,84 +4,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp">
 
+    <!-- Título -->
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tvTitleServicios"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/abril_fatface"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:padding="10dp"
         android:text="Servicios"
-        android:textSize="22sp"
-        android:textStyle="bold">
-    </TextView>
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/txtIdServicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ID Servicio"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/txtNombreServicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre del Servicio"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/txtPrecioServicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Precio"
-        android:inputType="numberDecimal" />
-
-    <ListView
-        android:id="@+id/listServicios"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
+    <!-- Sección de búsqueda -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/txtBuscarServicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Buscar servicio"
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/btnBuscarServicio"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Buscar"
+            android:src="@drawable/ic_buscar" />
+    </LinearLayout>
+
+    <!-- Listado de servicios -->
+    <ListView
+        android:id="@+id/listViewServicios"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="10dp" />
+
+    <!-- Botones inferiores -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="10dp">
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
 
         <ImageButton
             android:id="@+id/btnAgregarServicio"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_agregar"/>
+            android:contentDescription="Agregar"
+            android:src="@drawable/ic_agregar" />
 
         <ImageButton
             android:id="@+id/btnEditarServicio"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_editar"
-            android:layout_marginLeft="20dp"/>
+            android:contentDescription="Editar"
+            android:src="@drawable/ic_editar" />
 
         <ImageButton
             android:id="@+id/btnEliminarServicio"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_eliminar"
-            android:layout_marginLeft="20dp"/>
+            android:contentDescription="Eliminar"
+            android:src="@drawable/ic_eliminar" />
 
         <ImageButton
-            android:id="@+id/btnRegresarServicio"
-            android:layout_width="60dp"
+            android:id="@+id/btnSalirServicio"
+            android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_gravity="center"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_regresar"
-            android:padding="20dp"/>
+            android:contentDescription="Salir"
+            android:src="@drawable/ic_regresar" />
     </LinearLayout>
 
 </LinearLayout>
