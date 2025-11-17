@@ -2,34 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#f5f5f5"
-    android:layout_marginBottom="8dp"
-    android:layout_marginTop="8dp"
-    android:elevation="2dp">
+    android:orientation="horizontal"
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/tvIdServicio"
+    <ImageView
+        android:id="@+id/imgServicio"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_servicio"
+        android:padding="5dp" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ID"
-        android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:orientation="vertical"
+        android:layout_marginStart="15dp">
 
-    <TextView
-        android:id="@+id/tvNombreServicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre del servicio"
-        android:textSize="16sp"
-        android:paddingTop="4dp"/>
+        <TextView
+            android:id="@+id/txtNombreServicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lavado Exterior"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvPrecioServicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Precio"
-        android:textSize="16sp"
-        android:paddingTop="4dp"/>
+        <TextView
+            android:id="@+id/txtPrecioServicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₡5000"
+            android:textSize="14sp" />
+    </LinearLayout>
+
 </LinearLayout>

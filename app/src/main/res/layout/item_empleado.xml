@@ -6,10 +6,10 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/imgCarro"
+        android:id="@+id/imgEmpleado"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/ic_carro"
+        android:src="@drawable/ic_empleado"
         android:padding="5dp" />
 
     <LinearLayout
@@ -19,26 +19,48 @@
         android:layout_marginStart="15dp">
 
         <TextView
-            android:id="@+id/txtPlaca"
+            android:id="@+id/txtCedulaEmpleado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Placa: "
+            android:text="Cédula: "
             android:textStyle="bold"
             android:textSize="16sp"/>
 
         <TextView
-            android:id="@+id/txtModelo"
+            android:id="@+id/txtNombreEmpleado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Modelo: "
+            android:text="Nombre: "
             android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/txtAnno"
+            android:id="@+id/txtApellidosEmpleado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Año: "
+            android:text="Apellidos: "
             android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/txtTelefonoEmpleado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teléfono: "
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/txtCorreoEmpleado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo: "
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/txtPuestoEmpleado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puesto: "
+            android:textSize="14sp"/>
+
     </LinearLayout>
 
 </LinearLayout>

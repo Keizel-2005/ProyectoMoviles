@@ -1,10 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EmpleadoActivity">
+    android:orientation="vertical"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitleEmpleados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empleados"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:padding="10dp"/>
+
+    <!-- Sección de búsqueda -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/txtBuscarEmpleado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Buscar por cédula"
+            android:padding="10dp"/>
+
+        <ImageButton
+            android:id="@+id/btnBuscarEmpleado"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_buscar"
+            android:contentDescription="Buscar"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+
+    <!-- Listado de empleados -->
+    <ListView
+        android:id="@+id/listViewEmpleados"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/btnAgregarEmpleado"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_agregar"
+            android:contentDescription="Agregar"/>
+
+        <ImageButton
+            android:id="@+id/btnEditarEmpleado"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_editar"
+            android:contentDescription="Editar"/>
+
+        <ImageButton
+            android:id="@+id/btnEliminarEmpleado"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_eliminar"
+            android:contentDescription="Eliminar"/>
+
+        <ImageButton
+            android:id="@+id/btnSalirEmpleado"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_regresar"
+            android:contentDescription="Salir"/>
+    </LinearLayout>
+
+</LinearLayout>
