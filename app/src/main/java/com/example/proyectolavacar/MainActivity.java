@@ -34,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
         lvMenu = findViewById(R.id.lvMenu);
 
+        menuTitles = new String[]{
+                getString(R.string.menus_customers),
+                getString(R.string.menus_employees),
+                getString(R.string.menus_cars),
+                getString(R.string.menus_services),
+                getString(R.string.menus_invoice)
+        };
+
         MenuAdapter adapter = new MenuAdapter(this, menuTitles, menuIcons);
         lvMenu.setAdapter(adapter);
 

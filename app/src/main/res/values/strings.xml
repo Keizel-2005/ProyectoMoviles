@@ -7,4 +7,14 @@
     <string name="menu_cars">Carros</string>
     <string name="menu_services">Servicios</string>
     <string name="menu_invoice">Factura</string>
+
+    <!--Opciones del Menu-->
+    <string name="menus_customers">Clientes</string>
+    <string name="menus_employees">Empleados</string>
+    <string name="menus_cars">Carros</string>
+    <string name="menus_services">Servicios</string>
+    <string name="menus_invoice">Factura</string>
+
+    <string name="serch_barra">Buscar</string>
+
 </resources>
