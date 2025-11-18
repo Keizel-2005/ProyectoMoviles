@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:fontFamily="@font/abril_fatface"
         android:padding="10dp"
-        android:text="Carros"
+        android:text="@string/menu_cars"
         android:textSize="24sp"
         android:textStyle="bold" />
     <!--Busqueda-->

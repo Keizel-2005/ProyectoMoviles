@@ -1,3 +1,10 @@
 <resources>
+    <!--Titulos de las pantallas-->
     <string name="app_name">Lavacar</string>
+    <string name="menu_title">Lavacar Sistema</string>
+    <string name="menu_customers">Clientes</string>
+    <string name="menu_employees">Empleados</string>
+    <string name="menu_cars">Carros</string>
+    <string name="menu_services">Servicios</string>
+    <string name="menu_invoice">Factura</string>
 </resources>

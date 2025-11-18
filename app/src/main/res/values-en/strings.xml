@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Car Wash</string>
+    <string name="menu_title">Car Wash System</string>
+    <string name="menu_customers">Customers</string>
+    <string name="menu_employees">Employees</string>
+    <string name="menu_cars">Cars</string>
+    <string name="menu_services">Services</string>
+    <string name="menu_invoice">Invoice</string>
+</resources>
