@@ -6,16 +6,12 @@
     <string name="menu_cars">Carros</string>
     <string name="menu_services">Servicios</string>
     <string name="menu_invoice">Factura</string>
-
     <string name="menus_customers">Clientes</string>
     <string name="menus_employees">Empleados</string>
     <string name="menus_cars">Carros</string>
     <string name="menus_services">Servicios</string>
     <string name="menus_invoice">Factura</string>
-
     <string name="serch_barra">Buscar</string>
-
-    <!-- Nuevas variables agregadas -->
     <string name="titulo_carros">Carros</string>
     <string name="hint_buscar_placa">Buscar por placa</string>
     <string name="cd_buscar">Buscar</string>
@@ -39,5 +35,17 @@
     <string name="hint_precio_servicio">Precio</string>
     <string name="titulo_facturas">Facturas</string>
     <string name="hint_buscar_factura">Buscar por idFactura</string>
-
+    <string name="titulo_nueva_factura">Nueva Factura</string>
+    <string name="hint_cedula_cliente_maestro">Cédula Cliente</string>
+    <string name="hint_cedula_empleado_maestro">Cédula Empleado</string>
+    <string name="hint_placa_carro_maestro">Placa del carro</string>
+    <string name="info_nombre_cliente">Nombre cliente</string>
+    <string name="info_nombre_empleado">Nombre empleado</string>
+    <string name="info_carro">Info carro</string>
+    <string name="titulo_detalle_servicios">Detalle de servicios</string>
+    <string name="hint_codigo_servicio">Código servicio</string>
+    <string name="info_nombre_servicio">Nombre servicio</string>
+    <string name="hint_cantidad">Cantidad</string>
+    <string name="info_subtotal">Subtotal: 0</string>
+    <string name="btn_guardar_factura">Guardar Factura</string>
 </resources>

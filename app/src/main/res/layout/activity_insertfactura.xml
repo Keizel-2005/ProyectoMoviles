@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- TÍTULO -->
     <TextView
         android:id="@+id/tvTitleFactura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nueva Factura"
+        android:text="@string/titulo_nueva_factura"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- MAESTRO: Cédula Cliente -->
     <EditText
         android:id="@+id/txtCedulaCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Cédula Cliente"
+        android:hint="@string/hint_cedula_cliente_maestro"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/tvTitleFactura"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,18 +42,17 @@
         android:id="@+id/tvNombreCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Nombre cliente"
+        android:text="@string/info_nombre_cliente"
         android:paddingTop="6dp"
         app:layout_constraintTop_toBottomOf="@id/txtCedulaCliente"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- MAESTRO: Cédula Empleado -->
     <EditText
         android:id="@+id/txtCedulaEmpleado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Cédula Empleado"
+        android:hint="@string/hint_cedula_empleado_maestro"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/tvNombreCliente"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,18 +73,17 @@
         android:id="@+id/tvNombreEmpleado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Nombre empleado"
+        android:text="@string/info_nombre_empleado"
         android:paddingTop="6dp"
         app:layout_constraintTop_toBottomOf="@id/txtCedulaEmpleado"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- MAESTRO: Placa carro -->
     <EditText
         android:id="@+id/txtPlacaCarro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Placa del carro"
+        android:hint="@string/hint_placa_carro_maestro"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/tvNombreEmpleado"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,13 +104,12 @@
         android:id="@+id/tvInfoCarro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Info carro"
+        android:text="@string/info_carro"
         android:paddingTop="6dp"
         app:layout_constraintTop_toBottomOf="@id/txtPlacaCarro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- DETALLE: ingreso de servicio -->
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
@@ -128,18 +124,17 @@
         android:id="@+id/tvDetalleTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detalle de servicios"
+        android:text="@string/titulo_detalle_servicios"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp" />
 
-    <!-- Código Servicio -->
     <EditText
         android:id="@+id/txtIdServicio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Código servicio"
+        android:hint="@string/hint_codigo_servicio"
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@id/tvDetalleTitle"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,50 +151,45 @@
         app:layout_constraintTop_toTopOf="@id/txtIdServicio"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Nombre Servicio (autocompletado) -->
     <TextView
         android:id="@+id/tvNombreServicio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Nombre servicio"
+        android:text="@string/info_nombre_servicio"
         app:layout_constraintTop_toBottomOf="@id/txtIdServicio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Cantidad -->
     <EditText
         android:id="@+id/txtCantidad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Cantidad"
+        android:hint="@string/hint_cantidad"
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@id/tvNombreServicio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/txtPrecio" />
 
-    <!-- Precio (autocompletado desde servicio) -->
     <EditText
         android:id="@+id/txtPrecio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Precio unitario"
+        android:hint="@string/hint_precio_servicio"
         android:inputType="numberDecimal"
         android:enabled="false"
         app:layout_constraintTop_toBottomOf="@id/tvNombreServicio"
         app:layout_constraintStart_toEndOf="@id/txtCantidad"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Subtotal (calculado) -->
     <TextView
         android:id="@+id/tvSubtotal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Subtotal: 0"
+        android:text="@string/info_subtotal"
         app:layout_constraintTop_toBottomOf="@id/txtCantidad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botones para ListView: Agregar / Editar / Eliminar -->
     <LinearLayout
         android:id="@+id/llBtnsDetalle"
         android:layout_width="0dp"
@@ -239,7 +229,6 @@
             android:onClick="EliminarDetalle" />
     </LinearLayout>
 
-    <!-- ListView de Detalles -->
     <ListView
         android:id="@+id/listViewDetalles"
         android:layout_width="0dp"
@@ -252,7 +241,6 @@
         android:layout_marginTop="8dp"
         />
 
-    <!-- Botones Guardar Factura / Salir -->
     <LinearLayout
         android:id="@+id/llGuardarSalir"
         android:layout_width="0dp"
@@ -268,7 +256,7 @@
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_weight="1"
-            android:text="Guardar Factura"
+            android:text="@string/btn_guardar_factura"
             android:onClick="GuardarFactura" />
 
         <Button
@@ -276,7 +264,7 @@
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_weight="1"
-            android:text="Salir"
+            android:text="@string/cd_salir"
             android:onClick="Salir" />
     </LinearLayout>
 

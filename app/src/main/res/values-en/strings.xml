@@ -1,22 +1,17 @@
 <resources>
-    <string name="app_name">Car Wash</string>
-    <string name="menu_title">Car Wash System</string>
+    <string name="app_name">Lavacar</string>
+    <string name="menu_title">Lavacar System</string>
     <string name="menu_customers">Customers</string>
     <string name="menu_employees">Employees</string>
     <string name="menu_cars">Cars</string>
     <string name="menu_services">Services</string>
     <string name="menu_invoice">Invoice</string>
-
-    <!--Opciones del Menu-->
-    <string name="menus_customers">Clients</string>
+    <string name="menus_customers">Customers</string>
     <string name="menus_employees">Employees</string>
     <string name="menus_cars">Cars</string>
     <string name="menus_services">Services</string>
     <string name="menus_invoice">Invoice</string>
-
-    <string name="serch_barra">Serch</string>
-
-    <!-- Nuevas variables agregadas -->
+    <string name="serch_barra">Search</string>
     <string name="titulo_carros">Cars</string>
     <string name="hint_buscar_placa">Search by plate</string>
     <string name="cd_buscar">Search</string>
@@ -24,10 +19,10 @@
     <string name="cd_editar">Edit</string>
     <string name="cd_eliminar">Delete</string>
     <string name="cd_salir">Exit</string>
-    <string name="hint_placa">License Plate</string>
+    <string name="hint_placa">Plate</string>
     <string name="hint_modelo">Model</string>
     <string name="hint_anio">Year</string>
-    <string name="hint_cedula_cliente">Client ID</string>
+    <string name="hint_cedula_cliente">Customer ID</string>
     <string name="btn_guardar">Save</string>
     <string name="btn_regresar">Back</string>
     <string name="hint_cedula_clientee">ID</string>
@@ -36,8 +31,22 @@
     <string name="hint_telefono">Phone</string>
     <string name="hint_correo">Email</string>
     <string name="hint_puesto">Position</string>
-    <string name="hint_nombre_servicio">Service name</string>
+    <string name="hint_nombre_servicio">Service Name</string>
     <string name="hint_precio_servicio">Price</string>
     <string name="titulo_facturas">Invoices</string>
-    <string name="hint_buscar_factura">Search by Invoice ID</string>
+    <string name="hint_buscar_factura">Search by invoice ID</string>
+    <string name="titulo_nueva_factura">New Invoice</string>
+    <string name="hint_cedula_cliente_maestro">Customer ID</string>
+    <string name="hint_cedula_empleado_maestro">Employee ID</string>
+    <string name="hint_placa_carro_maestro">Car Plate</string>
+    <string name="info_nombre_cliente">Customer Name</string>
+    <string name="info_nombre_empleado">Employee Name</string>
+    <string name="info_carro">Car Info</string>
+    <string name="titulo_detalle_servicios">Service Details</string>
+    <string name="hint_codigo_servicio">Service Code</string>
+    <string name="info_nombre_servicio">Service Name</string>
+    <string name="hint_cantidad">Quantity</string>
+    <string name="info_subtotal">Subtotal: 0</string>
+
+    <string name="btn_guardar_factura">Save Invoice</string>
 </resources>

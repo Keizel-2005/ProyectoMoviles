@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
-    <!-- Campo Cédula (deshabilitado) -->
     <EditText
         android:id="@+id/txtCedulaCliente"
         android:layout_width="0dp"
@@ -17,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Campo Nombre -->
     <EditText
         android:id="@+id/txtNombreCliente"
         android:layout_width="0dp"
@@ -27,7 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Campo Apellidos -->
     <EditText
         android:id="@+id/txtApellidosCliente"
         android:layout_width="0dp"
@@ -37,7 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Campo Teléfono -->
     <EditText
         android:id="@+id/txtTelefonoCliente"
         android:layout_width="0dp"
@@ -48,7 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Campo Correo -->
     <EditText
         android:id="@+id/txtCorreoCliente"
         android:layout_width="0dp"
@@ -59,7 +54,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Botón Actualizar -->
     <Button
         android:id="@+id/btnActualizarCliente"
         android:layout_width="wrap_content"
@@ -69,7 +63,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtCorreoCliente"/>
 
-    <!-- Botón Regresar -->
     <Button
         android:id="@+id/btnRegresarCliente"
         android:layout_width="wrap_content"

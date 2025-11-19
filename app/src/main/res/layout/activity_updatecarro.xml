@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
-    <!-- Campo Placa (deshabilitado) -->
     <EditText
         android:id="@+id/txtPlaca"
         android:layout_width="0dp"
@@ -17,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Campo Modelo -->
     <EditText
         android:id="@+id/txtModelo"
         android:layout_width="0dp"
@@ -27,7 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Campo Año -->
     <EditText
         android:id="@+id/txtAnio"
         android:layout_width="0dp"
@@ -38,7 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Campo Cédula Cliente -->
     <EditText
         android:id="@+id/txtCedulaCliente"
         android:layout_width="0dp"
@@ -49,7 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Botón Actualizar -->
     <Button
         android:id="@+id/btnActualizarCarro"
         android:layout_width="wrap_content"
@@ -59,7 +54,6 @@
         app:layout_constraintTop_toBottomOf="@id/txtCedulaCliente"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Botón Regresar -->
     <Button
         android:id="@+id/btnRegresarCarro"
         android:layout_width="wrap_content"
