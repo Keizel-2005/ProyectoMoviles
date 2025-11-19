@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Car Wash</string>
     <string name="menu_title">Car Wash System</string>
@@ -16,4 +15,27 @@
     <string name="menus_invoice">Invoice</string>
 
     <string name="serch_barra">Serch</string>
+
+    <!-- Nuevas variables agregadas -->
+    <string name="titulo_carros">Cars</string>
+    <string name="hint_buscar_placa">Search by plate</string>
+    <string name="cd_buscar">Search</string>
+    <string name="cd_agregar">Add</string>
+    <string name="cd_editar">Edit</string>
+    <string name="cd_eliminar">Delete</string>
+    <string name="cd_salir">Exit</string>
+    <string name="hint_placa">License Plate</string>
+    <string name="hint_modelo">Model</string>
+    <string name="hint_anio">Year</string>
+    <string name="hint_cedula_cliente">Client ID</string>
+    <string name="btn_guardar">Save</string>
+    <string name="btn_regresar">Back</string>
+    <string name="hint_cedula_clientee">ID</string>
+    <string name="hint_nombre">First Name</string>
+    <string name="hint_apellidos">Last Name</string>
+    <string name="hint_telefono">Phone</string>
+    <string name="hint_correo">Email</string>
+    <string name="hint_puesto">Position</string>
+    <string name="hint_nombre_servicio">Service name</string>
+    <string name="hint_precio_servicio">Price</string>
 </resources>

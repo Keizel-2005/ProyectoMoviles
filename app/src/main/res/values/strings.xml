@@ -1,5 +1,4 @@
 <resources>
-    <!--Titulos de las pantallas-->
     <string name="app_name">Lavacar</string>
     <string name="menu_title">Lavacar Sistema</string>
     <string name="menu_customers">Clientes</string>
@@ -8,7 +7,6 @@
     <string name="menu_services">Servicios</string>
     <string name="menu_invoice">Factura</string>
 
-    <!--Opciones del Menu-->
     <string name="menus_customers">Clientes</string>
     <string name="menus_employees">Empleados</string>
     <string name="menus_cars">Carros</string>
@@ -16,5 +14,28 @@
     <string name="menus_invoice">Factura</string>
 
     <string name="serch_barra">Buscar</string>
+
+    <!-- Nuevas variables agregadas -->
+    <string name="titulo_carros">Carros</string>
+    <string name="hint_buscar_placa">Buscar por placa</string>
+    <string name="cd_buscar">Buscar</string>
+    <string name="cd_agregar">Agregar</string>
+    <string name="cd_editar">Editar</string>
+    <string name="cd_eliminar">Eliminar</string>
+    <string name="cd_salir">Salir</string>
+    <string name="hint_placa">Placa</string>
+    <string name="hint_modelo">Modelo</string>
+    <string name="hint_anio">Año</string>
+    <string name="hint_cedula_cliente">Cédula Cliente</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_regresar">Regresar</string>
+    <string name="hint_cedula_clientee">Cédula</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_apellidos">Apellidos</string>
+    <string name="hint_telefono">Teléfono</string>
+    <string name="hint_correo">Correo</string>
+    <string name="hint_puesto">Puesto</string>
+    <string name="hint_nombre_servicio">Nombre del servicio</string>
+    <string name="hint_precio_servicio">Precio</string>
 
 </resources>

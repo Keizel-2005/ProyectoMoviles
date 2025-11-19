@@ -1,81 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp">
 
+    <!-- Campo Cédula (no editable) -->
     <EditText
         android:id="@+id/txtCedula"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Cédula"
+        android:hint="@string/hint_cedula_clientee"
         android:enabled="false"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Campo Nombre -->
     <EditText
         android:id="@+id/txtNombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
+        android:hint="@string/hint_nombre"
         app:layout_constraintTop_toBottomOf="@id/txtCedula"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Campo Apellidos -->
     <EditText
         android:id="@+id/txtApellidos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Apellidos"
+        android:hint="@string/hint_apellidos"
         app:layout_constraintTop_toBottomOf="@id/txtNombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Campo Teléfono -->
     <EditText
         android:id="@+id/txtTelefono"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Teléfono"
+        android:hint="@string/hint_telefono"
         android:inputType="phone"
         app:layout_constraintTop_toBottomOf="@id/txtApellidos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Campo Correo -->
     <EditText
         android:id="@+id/txtCorreo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Correo"
+        android:hint="@string/hint_correo"
         android:inputType="textEmailAddress"
         app:layout_constraintTop_toBottomOf="@id/txtTelefono"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Campo Puesto -->
     <EditText
         android:id="@+id/txtPuesto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Puesto"
+        android:hint="@string/hint_puesto"
         app:layout_constraintTop_toBottomOf="@id/txtCorreo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Botón Actualizar -->
     <Button
         android:id="@+id/btnActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Actualizar"
+        android:text="@string/btn_guardar"
         android:onClick="Actualizar"
         app:layout_constraintTop_toBottomOf="@id/txtPuesto"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <!-- Botón Regresar -->
     <Button
         android:id="@+id/btnRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Regresar"
+        android:text="@string/btn_regresar"
         android:onClick="Regresar"
         app:layout_constraintTop_toBottomOf="@id/txtPuesto"
         app:layout_constraintEnd_toEndOf="parent"/>

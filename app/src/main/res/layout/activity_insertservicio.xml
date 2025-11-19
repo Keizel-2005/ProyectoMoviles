@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +11,7 @@
         android:id="@+id/txtNombreServicio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Nombre del servicio"
+        android:hint="@string/hint_nombre_servicio"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -20,7 +21,7 @@
         android:id="@+id/txtPrecioServicio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Precio"
+        android:hint="@string/hint_precio_servicio"
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@id/txtNombreServicio"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="GuardarServicio"
-        android:text="Guardar"
+        android:text="@string/btn_guardar"
         app:layout_constraintTop_toBottomOf="@id/txtPrecioServicio"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -42,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="RegresarListServicio"
-        android:text="Regresar"
+        android:text="@string/btn_regresar"
         app:layout_constraintTop_toBottomOf="@id/txtPrecioServicio"
         app:layout_constraintEnd_toEndOf="parent"/>
 

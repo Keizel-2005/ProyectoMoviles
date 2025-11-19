@@ -38,7 +38,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Buscar"
+            android:contentDescription="@string/cd_buscar"
             android:onClick="BuscarCliente"
             android:src="@drawable/ic_buscar" />
     </LinearLayout>
@@ -65,7 +65,7 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:contentDescription="Agregar"
+            android:contentDescription="@string/cd_agregar"
             android:onClick="InsertarCliente"
             android:src="@drawable/ic_agregar" />
 
@@ -75,7 +75,7 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:contentDescription="Editar"
+            android:contentDescription="@string/cd_editar"
             android:onClick="UpdateCliente"
             android:src="@drawable/ic_editar" />
 
@@ -85,7 +85,7 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:contentDescription="Eliminar"
+            android:contentDescription="@string/cd_eliminar"
             android:onClick="EliminarCliente"
             android:src="@drawable/ic_eliminar" />
 
@@ -95,7 +95,7 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:contentDescription="Salir"
+            android:contentDescription="@string/cd_salir"
             android:onClick="regresarcliente"
             android:src="@drawable/ic_regresar" />
     </LinearLayout>

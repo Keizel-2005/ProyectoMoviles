@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         android:id="@+id/txtCedulaCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Cédula"
+        android:hint="@string/hint_cedula_clientee"
         android:inputType="text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,7 @@
         android:id="@+id/txtNombreCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
+        android:hint="@string/hint_nombre"
         android:inputType="textPersonName"
         app:layout_constraintTop_toBottomOf="@id/txtCedulaCliente"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +34,7 @@
         android:id="@+id/txtApellidosCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Apellidos"
+        android:hint="@string/hint_apellidos"
         android:inputType="textPersonName"
         app:layout_constraintTop_toBottomOf="@id/txtNombreCliente"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,7 @@
         android:id="@+id/txtTelefonoCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Teléfono"
+        android:hint="@string/hint_telefono"
         android:inputType="phone"
         app:layout_constraintTop_toBottomOf="@id/txtApellidosCliente"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +56,7 @@
         android:id="@+id/txtCorreoCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Correo"
+        android:hint="@string/hint_correo"
         android:inputType="textEmailAddress"
         app:layout_constraintTop_toBottomOf="@id/txtTelefonoCliente"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +69,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="80dp"
         android:onClick="GuardarCliente"
-        android:text="Guardar"
+        android:text="@string/btn_guardar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCorreoCliente" />
 
@@ -79,8 +80,9 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="12dp"
         android:onClick="RegresarListCliente"
-        android:text="Regresar"
+        android:text="@string/btn_regresar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCorreoCliente" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
