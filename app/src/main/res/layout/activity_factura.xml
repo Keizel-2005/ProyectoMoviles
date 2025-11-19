@@ -1,10 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FacturaActivity">
+    android:orientation="vertical"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitleFacturas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:text="Facturas"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Sección de búsqueda -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/txtBuscarFactura"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Buscar por idFactura"
+            android:padding="10dp"
+            android:inputType="number" />
+
+        <ImageButton
+            android:id="@+id/btnBuscarFactura"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Buscar"
+            android:onClick="Buscar"
+            android:src="@drawable/ic_buscar" />
+    </LinearLayout>
+
+    <!-- Listado de facturas -->
+    <ListView
+        android:id="@+id/listViewFacturas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="10dp" />
+
+    <!-- Botones inferiores -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/btnAgregarFactura"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Agregar"
+            android:onClick="Insertar"
+            android:src="@drawable/ic_agregar" />
+
+        <ImageButton
+            android:id="@+id/btnEditarFactura"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Editar"
+            android:onClick="Update"
+            android:src="@drawable/ic_editar" />
+
+        <ImageButton
+            android:id="@+id/btnEliminarFactura"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Eliminar"
+            android:onClick="Eliminar"
+            android:src="@drawable/ic_eliminar" />
+
+        <ImageButton
+            android:id="@+id/btnSalirFactura"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Salir"
+            android:onClick="regresar"
+            android:src="@drawable/ic_regresar" />
+    </LinearLayout>
+
+</LinearLayout>

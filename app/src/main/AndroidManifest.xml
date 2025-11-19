@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoLavacar">
         <activity
-            android:name=".FacturaActivity"
+            android:name=".Factura.FacturaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Factura.InsertFactura"
+            android:exported="false" />
+        <activity
+            android:name=".Factura.UpdateFactura"
             android:exported="false" />
         <activity
             android:name=".Servicios.ServicioActivity"

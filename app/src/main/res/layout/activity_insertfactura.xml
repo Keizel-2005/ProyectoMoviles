@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- TÍTULO -->
+    <TextView
+        android:id="@+id/tvTitleFactura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nueva Factura"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- MAESTRO: Cédula Cliente -->
+    <EditText
+        android:id="@+id/txtCedulaCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Cédula Cliente"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleFactura"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarCliente"
+        app:layout_constraintHorizontal_bias="0" />
+
+    <ImageButton
+        android:id="@+id/btnBuscarCliente"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_buscar"
+        android:background="@android:color/transparent"
+        android:onClick="BuscarCliente"
+        app:layout_constraintStart_toEndOf="@id/txtCedulaCliente"
+        app:layout_constraintTop_toTopOf="@id/txtCedulaCliente"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNombreCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre cliente"
+        android:paddingTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/txtCedulaCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- MAESTRO: Cédula Empleado -->
+    <EditText
+        android:id="@+id/txtCedulaEmpleado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Cédula Empleado"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarEmpleado" />
+
+    <ImageButton
+        android:id="@+id/btnBuscarEmpleado"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_buscar"
+        android:background="@android:color/transparent"
+        android:onClick="BuscarEmpleado"
+        app:layout_constraintStart_toEndOf="@id/txtCedulaEmpleado"
+        app:layout_constraintTop_toTopOf="@id/txtCedulaEmpleado"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNombreEmpleado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre empleado"
+        android:paddingTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/txtCedulaEmpleado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- MAESTRO: Placa carro -->
+    <EditText
+        android:id="@+id/txtPlacaCarro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Placa del carro"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreEmpleado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarCarro" />
+
+    <ImageButton
+        android:id="@+id/btnBuscarCarro"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_buscar"
+        android:background="@android:color/transparent"
+        android:onClick="BuscarCarro"
+        app:layout_constraintStart_toEndOf="@id/txtPlacaCarro"
+        app:layout_constraintTop_toTopOf="@id/txtPlacaCarro"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvInfoCarro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Info carro"
+        android:paddingTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/txtPlacaCarro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- DETALLE: ingreso de servicio -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/tvInfoCarro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvDetalleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalle de servicios"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Código Servicio -->
+    <EditText
+        android:id="@+id/txtIdServicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Código servicio"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/tvDetalleTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscarServicio" />
+
+    <ImageButton
+        android:id="@+id/btnBuscarServicio"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_buscar"
+        android:background="@android:color/transparent"
+        android:onClick="BuscarServicio"
+        app:layout_constraintStart_toEndOf="@id/txtIdServicio"
+        app:layout_constraintTop_toTopOf="@id/txtIdServicio"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Nombre Servicio (autocompletado) -->
+    <TextView
+        android:id="@+id/tvNombreServicio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre servicio"
+        app:layout_constraintTop_toBottomOf="@id/txtIdServicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Cantidad -->
+    <EditText
+        android:id="@+id/txtCantidad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Cantidad"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreServicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtPrecio" />
+
+    <!-- Precio (autocompletado desde servicio) -->
+    <EditText
+        android:id="@+id/txtPrecio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Precio unitario"
+        android:inputType="numberDecimal"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreServicio"
+        app:layout_constraintStart_toEndOf="@id/txtCantidad"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Subtotal (calculado) -->
+    <TextView
+        android:id="@+id/tvSubtotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Subtotal: 0"
+        app:layout_constraintTop_toBottomOf="@id/txtCantidad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botones para ListView: Agregar / Editar / Eliminar -->
+    <LinearLayout
+        android:id="@+id/llBtnsDetalle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:paddingTop="8dp">
+
+        <ImageButton
+            android:id="@+id/btnAgregarDetalle"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_agregar"
+            android:background="@android:color/transparent"
+            android:onClick="AgregarDetalle" />
+
+        <ImageButton
+            android:id="@+id/btnEditarDetalle"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_editar"
+            android:background="@android:color/transparent"
+            android:onClick="EditarDetalle" />
+
+        <ImageButton
+            android:id="@+id/btnEliminarDetalle"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_eliminar"
+            android:background="@android:color/transparent"
+            android:onClick="EliminarDetalle" />
+    </LinearLayout>
+
+    <!-- ListView de Detalles -->
+    <ListView
+        android:id="@+id/listViewDetalles"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:dividerHeight="8dp"
+        app:layout_constraintTop_toBottomOf="@id/llBtnsDetalle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llGuardarSalir"
+        android:layout_marginTop="8dp"
+        />
+
+    <!-- Botones Guardar Factura / Salir -->
+    <LinearLayout
+        android:id="@+id/llGuardarSalir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/btnGuardarFactura"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Guardar Factura"
+            android:onClick="GuardarFactura" />
+
+        <Button
+            android:id="@+id/btnSalirFactura"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Salir"
+            android:onClick="Salir" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
