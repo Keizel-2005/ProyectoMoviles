@@ -89,7 +89,7 @@ public class UpdateEmpleado extends AppCompatActivity {
         }
     }
 
-    // Método OnClick para Regresar
+
     public void REgresar(View view) {
         Intent intent = new Intent(this, EmpleadoActivity.class);
         startActivity(intent);
