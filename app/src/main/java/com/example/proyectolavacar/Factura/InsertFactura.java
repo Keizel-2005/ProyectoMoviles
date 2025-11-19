@@ -27,12 +27,10 @@ import java.util.Locale;
 
 public class InsertFactura extends AppCompatActivity {
 
-    // Maestro
     EditText txtCedulaCliente, txtCedulaEmpleado, txtPlacaCarro;
     TextView tvNombreCliente, tvNombreEmpleado, tvInfoCarro;
     ImageButton btnBuscarCliente, btnBuscarEmpleado, btnBuscarCarro;
 
-    // Detalle
     EditText txtIdServicio, txtCantidad, txtPrecio;
     TextView tvNombreServicio, tvSubtotal;
     ImageButton btnBuscarServicio;
@@ -41,7 +39,6 @@ public class InsertFactura extends AppCompatActivity {
     ArrayList<String> datosDetalles;
     int itemseleccionado = -1;
 
-    // Totales en memoria
     double totalFactura = 0.0;
 
     @Override

@@ -54,7 +54,6 @@ public class EmpleadoActivity extends AppCompatActivity {
         });
     }
 
-    // Botón Agregar
     public void Insertar(View view) {
         Intent intent = new Intent(this, InsertEmpleado.class);
         startActivity(intent);

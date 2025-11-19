@@ -168,7 +168,7 @@ public class ClienteActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        MostrarTodos(null); // recarga la lista automáticamente
+        MostrarTodos(null);
     }
 
 

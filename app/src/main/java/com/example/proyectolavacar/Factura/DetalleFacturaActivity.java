@@ -37,7 +37,6 @@ public class DetalleFacturaActivity extends AppCompatActivity {
         tvTotal = findViewById(R.id.tvTotal);
         listViewDetalle = findViewById(R.id.listViewDetalle);
 
-        // recibir idFactura desde Intent
         String idFactura = getIntent().getStringExtra("idFactura");
         if (idFactura == null) {
             Toast.makeText(this, "No se recibió idFactura", Toast.LENGTH_LONG).show();
