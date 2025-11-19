@@ -60,19 +60,6 @@ public class FacturaActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Botón Update - abrir UpdateFactura con idFactura
-    public void Update(View view) {
-        if (itemseleccionado >= 0) {
-            String item = adapter.getItem(itemseleccionado);
-            // formato: id - fecha - cedulaCliente - placa (total)
-            String idFactura = item.split(" - ")[0];
-            Intent intent = new Intent(this, UpdateFactura.class);
-            intent.putExtra("idFactura", idFactura);
-            startActivity(intent);
-        } else {
-            Toast.makeText(getApplicationContext(), "Debe seleccionar una factura", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     // Botón Eliminar
     public void Eliminar(View view) {

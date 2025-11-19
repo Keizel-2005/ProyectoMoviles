@@ -18,9 +18,6 @@
             android:name=".Factura.InsertFactura"
             android:exported="false" />
         <activity
-            android:name=".Factura.UpdateFactura"
-            android:exported="false" />
-        <activity
             android:name=".Servicios.ServicioActivity"
             android:exported="false" />
         <activity

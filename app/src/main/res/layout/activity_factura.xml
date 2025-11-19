@@ -71,16 +71,6 @@
             android:src="@drawable/ic_agregar" />
 
         <ImageButton
-            android:id="@+id/btnEditarFactura"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="Editar"
-            android:onClick="Update"
-            android:src="@drawable/ic_editar" />
-
-        <ImageButton
             android:id="@+id/btnEliminarFactura"
             android:layout_width="0dp"
             android:layout_height="60dp"
