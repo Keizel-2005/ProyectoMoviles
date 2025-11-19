@@ -15,6 +15,9 @@
             android:name=".Factura.FacturaActivity"
             android:exported="false" />
         <activity
+            android:name=".Factura.DetalleFacturaActivity"
+            android:exported="false" />
+        <activity
             android:name=".Factura.InsertFactura"
             android:exported="false" />
         <activity

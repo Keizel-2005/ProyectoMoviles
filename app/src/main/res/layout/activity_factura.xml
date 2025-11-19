@@ -89,6 +89,16 @@
             android:contentDescription="@string/cd_salir"
             android:onClick="regresar"
             android:src="@drawable/ic_regresar" />
+        <ImageButton
+            android:id="@+id/btnMostrarDetalle"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="Mostrar Detalle"
+            android:onClick="MostrarDetalleFactura"
+            android:src="@drawable/ic_factura" />
+
     </LinearLayout>
 
 </LinearLayout>

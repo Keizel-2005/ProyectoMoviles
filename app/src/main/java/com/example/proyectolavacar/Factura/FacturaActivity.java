@@ -155,6 +155,19 @@ public class FacturaActivity extends AppCompatActivity {
         fila.close();
         db.close();
     }
+    public void MostrarDetalleFactura(View view) {
+        if (itemseleccionado >= 0) {
+            String item = adapter.getItem(itemseleccionado);
+            String idFactura = item.split(" - ")[0];
+
+            Intent intent = new Intent(this, DetalleFacturaActivity.class);
+            intent.putExtra("idFactura", idFactura);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Debe seleccionar una factura", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     @Override
     protected void onResume() {

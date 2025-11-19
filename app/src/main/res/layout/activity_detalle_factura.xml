@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvIdFactura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Factura: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha: " />
+
+    <TextView
+        android:id="@+id/tvCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cliente: " />
+
+    <TextView
+        android:id="@+id/tvEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empleado: " />
+
+    <TextView
+        android:id="@+id/tvPlaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Placa: " />
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: "
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalle de servicios:"
+        android:textStyle="bold"
+        android:paddingTop="8dp"/>
+
+    <ListView
+        android:id="@+id/listViewDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="8dp"/>
+    <ImageButton
+        android:id="@+id/btnSalirDetalle"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/cd_salir"
+        android:onClick="regresardetalle"
+        android:src="@drawable/ic_regresar" />
+</LinearLayout>
