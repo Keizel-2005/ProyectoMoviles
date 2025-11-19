@@ -31,7 +31,6 @@ public class InsertCliente extends AppCompatActivity {
         txtCorreo = findViewById(R.id.txtCorreoCliente);
     }
 
-    // Método OnClick para Guardar
     public void GuardarCliente(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -55,7 +54,6 @@ public class InsertCliente extends AppCompatActivity {
 
             Toast.makeText(this, "CLiente registrado correctamente", Toast.LENGTH_LONG).show();
 
-            // Limpia los campos
             txtCedula.setText("");
             txtNombre.setText("");
             txtApellidos.setText("");
@@ -66,7 +64,6 @@ public class InsertCliente extends AppCompatActivity {
         }
     }
 
-    // Método OnClick para Regresar
     public void RegresarListCliente(View view) {
         Intent intent = new Intent(this, ClienteActivity.class);
         startActivity(intent);

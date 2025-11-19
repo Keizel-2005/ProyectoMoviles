@@ -29,7 +29,6 @@ public class InsertCarro extends AppCompatActivity {
         txtCedulaCliente = findViewById(R.id.txtCedulaCliente);
     }
 
-    // Método OnClick para Guardar
     public void Guardar(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -39,10 +38,8 @@ public class InsertCarro extends AppCompatActivity {
         String anio = txtAno.getText().toString();
         String cedulaCliente = txtCedulaCliente.getText().toString();
 
-        // Validación de campos requeridos
         if (!placa.isEmpty() && !modelo.isEmpty() && !cedulaCliente.isEmpty()) {
 
-            // Validar que exista el cliente
             Cursor fila = db.rawQuery(
                     "SELECT cedula FROM Cliente WHERE cedula=?",
                     new String[]{cedulaCliente}
@@ -67,8 +64,7 @@ public class InsertCarro extends AppCompatActivity {
             db.close();
 
             Toast.makeText(this, "Carro registrado correctamente", Toast.LENGTH_LONG).show();
-
-            // Limpiar campos
+            
             txtPlaca.setText("");
             txtModelo.setText("");
             txtAno.setText("");
@@ -79,7 +75,6 @@ public class InsertCarro extends AppCompatActivity {
         }
     }
 
-    // Método OnClick para Regresar
     public void Regresar(View view) {
         Intent intent = new Intent(this, com.example.proyectolavacar.Carros.CarroActivity.class);
         startActivity(intent);

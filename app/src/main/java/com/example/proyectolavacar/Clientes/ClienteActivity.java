@@ -61,7 +61,6 @@ public class ClienteActivity extends AppCompatActivity {
             view.setBackgroundColor(Color.LTGRAY);
         });
     }
-    // Botón Agregar
     public void InsertarCliente(View view) {
         Intent intent = new Intent(this, InsertCliente.class);
         startActivity(intent);
@@ -80,15 +79,13 @@ public class ClienteActivity extends AppCompatActivity {
     }
 
 
-    // Botón Eliminar
     public void EliminarCliente(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
-            String cedula = item.split(" - ")[0]; // suponiendo formato "cedula - nombre"
+            String cedula = item.split(" - ")[0];
             EliminarPorCedula(cedula);
 
             adapter.remove(item);
-            // Restablece el color de fondo del elemento seleccionado
             View itemresaltado = listViewClientes.getChildAt(itemseleccionado);
             if (itemresaltado != null) {
                 itemresaltado.setBackgroundColor(0);
@@ -99,7 +96,6 @@ public class ClienteActivity extends AppCompatActivity {
         }
     }
 
-    // Método para eliminar por cédula
     public void EliminarPorCedula(String cedula) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -118,7 +114,6 @@ public class ClienteActivity extends AppCompatActivity {
         }
     }
 
-    //  Método Buscar (filtra por cédula)
     public void BuscarCliente(View view) {
         String criterio = txtBuscarCliente.getText().toString();
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
@@ -144,7 +139,6 @@ public class ClienteActivity extends AppCompatActivity {
         db.close();
     }
 
-    //  Método MostrarTodos (trae todos los clientes con SELECT *)
     public void MostrarTodos(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
@@ -178,7 +172,6 @@ public class ClienteActivity extends AppCompatActivity {
     }
 
 
-    // Botón regresar
     public void regresarcliente(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

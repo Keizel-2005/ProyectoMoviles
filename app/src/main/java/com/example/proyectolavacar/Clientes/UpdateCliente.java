@@ -32,8 +32,6 @@ public class UpdateCliente extends AppCompatActivity {
 
         // Recibir la cédula desde ClienteActivity
         cedulaRecibida = getIntent().getStringExtra("cedula");
-
-        // Cargar datos del cliente
         cargarCliente();
     }
 
@@ -53,7 +51,6 @@ public class UpdateCliente extends AppCompatActivity {
         db.close();
     }
 
-    // Método OnClick para Actualizar
     public void ActualizarCliente(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -85,7 +82,6 @@ public class UpdateCliente extends AppCompatActivity {
         }
     }
 
-    // Método OnClick para Regresar
     public void RegresarCliente(View view) {
         Intent intent = new Intent(this, ClienteActivity.class);
         startActivity(intent);

@@ -31,7 +31,6 @@ public class InsertEmpleado extends AppCompatActivity {
         txtPuesto = findViewById(R.id.txtPuesto);
     }
 
-    // Método OnClick para Guardar
     public void Guardar(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -57,7 +56,6 @@ public class InsertEmpleado extends AppCompatActivity {
 
             Toast.makeText(this, "Empleado registrado correctamente", Toast.LENGTH_LONG).show();
 
-            // Limpia los campos
             txtCedula.setText("");
             txtNombre.setText("");
             txtApellidos.setText("");
@@ -69,8 +67,7 @@ public class InsertEmpleado extends AppCompatActivity {
         }
     }
 
-    // Método OnClick para Regresar
-    public void RegresarListCLiente(View view) {
+    public void RegresarListEmpleado(View view) {
         Intent intent = new Intent(this, EmpleadoActivity.class);
         startActivity(intent);
         finish();

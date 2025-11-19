@@ -59,13 +59,13 @@ public class CarroActivity extends AppCompatActivity {
         });
     }
 
-    // Botón Agregar
+
     public void Insertar(View view) {
         Intent intent = new Intent(this, InsertCarro.class);
         startActivity(intent);
     }
 
-    // Botón Update
+
     public void Update(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
@@ -79,7 +79,7 @@ public class CarroActivity extends AppCompatActivity {
         }
     }
 
-    // Botón Eliminar
+
     public void Eliminar(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
@@ -101,7 +101,6 @@ public class CarroActivity extends AppCompatActivity {
         }
     }
 
-    // Método eliminar por placa
     public void EliminarPorPlaca(String placa) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -120,7 +119,6 @@ public class CarroActivity extends AppCompatActivity {
         }
     }
 
-    // Botón Buscar
     public void Buscar(View view) {
         String criterio = txtBuscarCarro.getText().toString();
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
@@ -149,7 +147,6 @@ public class CarroActivity extends AppCompatActivity {
         db.close();
     }
 
-    // Mostrar todos
     public void MostrarTodos(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
@@ -184,7 +181,6 @@ public class CarroActivity extends AppCompatActivity {
         MostrarTodos(null);
     }
 
-    // Botón regresar
     public void regresar(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

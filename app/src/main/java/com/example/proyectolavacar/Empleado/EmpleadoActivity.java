@@ -57,7 +57,7 @@ public class EmpleadoActivity extends AppCompatActivity {
     // Botón Agregar
     public void Insertar(View view) {
         Intent intent = new Intent(this, InsertEmpleado.class);
-        startActivity(intent); // 🔹 agregado
+        startActivity(intent);
     }
     public void UpdateEmpleado(View view) {
         if (itemseleccionado >= 0) {
@@ -73,15 +73,13 @@ public class EmpleadoActivity extends AppCompatActivity {
     }
 
 
-    // Botón Eliminar
     public void Eliminar(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
-            String cedula = item.split(" - ")[0]; // suponiendo formato "cedula - nombre"
+            String cedula = item.split(" - ")[0];
             EliminarPorCedula(cedula);
 
             adapter.remove(item);
-            // Restablece el color de fondo del elemento seleccionado
             View itemresaltado = listViewEmpleados.getChildAt(itemseleccionado);
             if (itemresaltado != null) {
                 itemresaltado.setBackgroundColor(0);
@@ -92,7 +90,6 @@ public class EmpleadoActivity extends AppCompatActivity {
         }
     }
 
-    // Método para eliminar por cédula
     public void EliminarPorCedula(String cedula) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -111,7 +108,6 @@ public class EmpleadoActivity extends AppCompatActivity {
         }
     }
 
-    //  Método Buscar (filtra por cédula)
     public void Buscar(View view) {
         String criterio = txtBuscarEmpleado.getText().toString();
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
@@ -138,7 +134,6 @@ public class EmpleadoActivity extends AppCompatActivity {
         db.close();
     }
 
-    // 🔎 Método MostrarTodos (trae todos los empleados con SELECT *)
     public void MostrarTodos(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
@@ -166,11 +161,10 @@ public class EmpleadoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        MostrarTodos(null); // recarga la lista automáticamente
+        MostrarTodos(null);
     }
 
 
-    // Botón regresar
     public void regresar(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

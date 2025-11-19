@@ -60,7 +60,6 @@ public class UpdateCarro extends AppCompatActivity {
 
         if (!placa.isEmpty() && !modelo.isEmpty() && !anio.isEmpty()) {
 
-            // Validar que el cliente exista
             Cursor cursorCliente = db.rawQuery(
                     "SELECT cedula FROM Cliente WHERE cedula=?",
                     new String[]{cedulaCliente}
