@@ -37,5 +37,7 @@
     <string name="hint_puesto">Puesto</string>
     <string name="hint_nombre_servicio">Nombre del servicio</string>
     <string name="hint_precio_servicio">Precio</string>
+    <string name="titulo_facturas">Facturas</string>
+    <string name="hint_buscar_factura">Buscar por idFactura</string>
 
 </resources>

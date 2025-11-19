@@ -38,4 +38,6 @@
     <string name="hint_puesto">Position</string>
     <string name="hint_nombre_servicio">Service name</string>
     <string name="hint_precio_servicio">Price</string>
+    <string name="titulo_facturas">Invoices</string>
+    <string name="hint_buscar_factura">Search by Invoice ID</string>
 </resources>
