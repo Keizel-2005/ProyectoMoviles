@@ -1,4 +1,4 @@
-package com.example.proyectolavacar;
+package com.example.proyectolavacar.Empleado;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.proyectolavacar.AdminBD;
+import com.example.proyectolavacar.R;
 
 public class UpdateEmpleado extends AppCompatActivity {
 

@@ -18,19 +18,19 @@
             android:name=".ServicioActivity"
             android:exported="false" />
         <activity
-            android:name=".CarroActivity"
+            android:name=".Carros.CarroActivity"
             android:exported="false" />
         <activity
-            android:name=".EmpleadoActivity"
+            android:name=".Empleado.EmpleadoActivity"
             android:exported="false" />
         <activity
-            android:name=".ClienteActivity"
+            android:name=".Clientes.ClienteActivity"
             android:exported="false" />
         <activity
-            android:name=".InsertEmpleado"
+            android:name=".Empleado.InsertEmpleado"
             android:exported="false" />
         <activity
-            android:name=".UpdateEmpleado"
+            android:name=".Empleado.UpdateEmpleado"
             android:exported="false" />
 
         <activity

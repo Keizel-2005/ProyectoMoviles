@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.proyectolavacar.Carros.CarroActivity;
+import com.example.proyectolavacar.Clientes.ClienteActivity;
+import com.example.proyectolavacar.Empleado.EmpleadoActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     ListView lvMenu;
