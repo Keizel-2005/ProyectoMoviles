@@ -39,6 +39,7 @@
             android:layout_marginStart="10dp"
             android:background="@android:color/transparent"
             android:contentDescription="Buscar"
+            android:onClick="BuscarCliente"
             android:src="@drawable/ic_buscar" />
     </LinearLayout>
 
@@ -65,6 +66,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Agregar"
+            android:onClick="InsertarCliente"
             android:src="@drawable/ic_agregar" />
 
         <ImageButton
@@ -74,6 +76,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Editar"
+            android:onClick="UpdateCliente"
             android:src="@drawable/ic_editar" />
 
         <ImageButton
@@ -83,6 +86,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Eliminar"
+            android:onClick="EliminarCliente"
             android:src="@drawable/ic_eliminar" />
 
         <ImageButton
@@ -92,6 +96,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Salir"
+            android:onClick="regresarcliente"
             android:src="@drawable/ic_regresar" />
     </LinearLayout>
 

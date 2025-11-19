@@ -1,4 +1,4 @@
-package com.example.proyectolavacar.Empleado;
+package com.example.proyectolavacar.Clientes;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -11,28 +11,28 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectolavacar.AdminBD;
+import com.example.proyectolavacar.Clientes.ClienteActivity;
 import com.example.proyectolavacar.R;
 
-public class InsertEmpleado extends AppCompatActivity {
+public class InsertCliente extends AppCompatActivity {
 
-    EditText txtCedula, txtNombre, txtApellidos, txtTelefono, txtCorreo, txtPuesto;
+    EditText txtCedula, txtNombre, txtApellidos, txtTelefono, txtCorreo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insertempleado);
+        setContentView(R.layout.activity_insertcliente);
 
 
-        txtCedula = findViewById(R.id.txtCedula);
-        txtNombre = findViewById(R.id.txtNombre);
-        txtApellidos = findViewById(R.id.txtApellidos);
-        txtTelefono = findViewById(R.id.txtTelefono);
-        txtCorreo = findViewById(R.id.txtCorreo);
-        txtPuesto = findViewById(R.id.txtPuesto);
+        txtCedula = findViewById(R.id.txtCedulaCliente);
+        txtNombre = findViewById(R.id.txtNombreCliente);
+        txtApellidos = findViewById(R.id.txtApellidosCliente);
+        txtTelefono = findViewById(R.id.txtTelefonoCliente);
+        txtCorreo = findViewById(R.id.txtCorreoCliente);
     }
 
     // Método OnClick para Guardar
-    public void Guardar(View view) {
+    public void GuardarCliente(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
@@ -41,7 +41,6 @@ public class InsertEmpleado extends AppCompatActivity {
         String apellidos = txtApellidos.getText().toString();
         String telefono = txtTelefono.getText().toString();
         String correo = txtCorreo.getText().toString();
-        String puesto = txtPuesto.getText().toString();
 
         if (!cedula.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty()) {
             ContentValues registro = new ContentValues();
@@ -50,12 +49,11 @@ public class InsertEmpleado extends AppCompatActivity {
             registro.put("apellidos", apellidos);
             registro.put("telefono", telefono);
             registro.put("correo", correo);
-            registro.put("puesto", puesto);
 
-            db.insert("Empleados", null, registro);
+            db.insert("Cliente", null, registro);
             db.close();
 
-            Toast.makeText(this, "Empleado registrado correctamente", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "CLiente registrado correctamente", Toast.LENGTH_LONG).show();
 
             // Limpia los campos
             txtCedula.setText("");
@@ -63,15 +61,14 @@ public class InsertEmpleado extends AppCompatActivity {
             txtApellidos.setText("");
             txtTelefono.setText("");
             txtCorreo.setText("");
-            txtPuesto.setText("");
         } else {
             Toast.makeText(this, "Debe llenar al menos cédula, nombre y apellidos", Toast.LENGTH_LONG).show();
         }
     }
 
     // Método OnClick para Regresar
-    public void RegresarListCLiente(View view) {
-        Intent intent = new Intent(this, EmpleadoActivity.class);
+    public void RegresarListCliente(View view) {
+        Intent intent = new Intent(this, ClienteActivity.class);
         startActivity(intent);
         finish();
     }

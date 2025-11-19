@@ -75,7 +75,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="Editar"
-            android:onClick="Update"
+            android:onClick="UpdateEmpleado"
             android:src="@drawable/ic_editar" />
 
         <ImageButton

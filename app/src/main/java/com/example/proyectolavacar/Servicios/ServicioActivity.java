@@ -1,4 +1,5 @@
-package com.example.proyectolavacar.Empleado;
+package com.example.proyectolavacar.Servicios;
+
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,9 +21,9 @@ import com.example.proyectolavacar.R;
 
 import java.util.ArrayList;
 
-public class EmpleadoActivity extends AppCompatActivity {
-    EditText txtBuscarEmpleado;
-    ListView listViewEmpleados;
+public class ServicioActivity extends AppCompatActivity {
+    EditText txtBuscarServicio;
+    ListView listViewServicios;
 
     ArrayAdapter<String> adapter;
     ArrayList<String> datos;
@@ -32,22 +33,22 @@ public class EmpleadoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_empleado);
+        setContentView(R.layout.activity_servicio);
 
-        txtBuscarEmpleado = findViewById(R.id.txtBuscarEmpleado);
-        listViewEmpleados = findViewById(R.id.listViewEmpleados);
+        txtBuscarServicio = findViewById(R.id.txtBuscarServicio);
+        listViewServicios = findViewById(R.id.listViewServicios);
 
         // Inicializar lista y adaptador
         datos = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, datos);
-        listViewEmpleados.setAdapter(adapter);
+        listViewServicios.setAdapter(adapter);
 
         // Evento de selección en la lista
-        listViewEmpleados.setOnItemClickListener((parent, view, position, id) -> {
+        listViewServicios.setOnItemClickListener((parent, view, position, id) -> {
             itemseleccionado = position;
             // Quita colores anteriores
-            for (int i = 0; i < listViewEmpleados.getChildCount(); i++) {
-                listViewEmpleados.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+            for (int i = 0; i < listViewServicios.getChildCount(); i++) {
+                listViewServicios.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
             }
             // Resalta el nuevo seleccionado
             view.setBackgroundColor(Color.LTGRAY);
@@ -55,34 +56,34 @@ public class EmpleadoActivity extends AppCompatActivity {
     }
 
     // Botón Agregar
-    public void Insertar(View view) {
-        Intent intent = new Intent(this, InsertEmpleado.class);
-        startActivity(intent); // 🔹 agregado
+    public void InsertarServicio(View view) {
+        Intent intent = new Intent(this, InsertServicio.class);
+        startActivity(intent);
     }
-    public void UpdateEmpleado(View view) {
+
+    // Botón Update
+    public void UpdateServicio(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
-            String cedula = item.split(" - ")[0]; // obtenemos la cédula
+            String idServicio = item.split(" - ")[0]; // obtenemos el id
 
-            Intent intent = new Intent(this, UpdateEmpleado.class);
-            intent.putExtra("cedula", cedula); // pasamos la cédula seleccionada
+            Intent intent = new Intent(this, UpdateServicio.class);
+            intent.putExtra("idServicio", idServicio); // pasamos el id seleccionado
             startActivity(intent);
         } else {
-            Toast.makeText(getApplicationContext(), "Debe seleccionar un empleado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Debe seleccionar un servicio", Toast.LENGTH_SHORT).show();
         }
     }
 
-
     // Botón Eliminar
-    public void Eliminar(View view) {
+    public void EliminarServicio(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
-            String cedula = item.split(" - ")[0]; // suponiendo formato "cedula - nombre"
-            EliminarPorCedula(cedula);
+            String idServicio = item.split(" - ")[0]; // suponiendo formato "id - nombre"
+            EliminarPorId(idServicio);
 
             adapter.remove(item);
-            // Restablece el color de fondo del elemento seleccionado
-            View itemresaltado = listViewEmpleados.getChildAt(itemseleccionado);
+            View itemresaltado = listViewServicios.getChildAt(itemseleccionado);
             if (itemresaltado != null) {
                 itemresaltado.setBackgroundColor(0);
             }
@@ -92,45 +93,44 @@ public class EmpleadoActivity extends AppCompatActivity {
         }
     }
 
-    // Método para eliminar por cédula
-    public void EliminarPorCedula(String cedula) {
+    // Método para eliminar por id
+    public void EliminarPorId(String idServicio) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
-        if (!cedula.isEmpty()) {
-            int registrosEliminados = db.delete("Empleados", "cedula=?", new String[]{cedula});
+        if (!idServicio.isEmpty()) {
+            int registrosEliminados = db.delete("Servicio", "idServicio=?", new String[]{idServicio});
             db.close();
 
             if (registrosEliminados > 0) {
-                Toast.makeText(getApplicationContext(), "Empleado eliminado correctamente", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Servicio eliminado correctamente", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(getApplicationContext(), "No se encontró ningún empleado con esa cédula", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "No se encontró ningún servicio con ese ID", Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(getApplicationContext(), "Falta la cédula para eliminar", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Falta el ID para eliminar", Toast.LENGTH_LONG).show();
         }
     }
 
-    //  Método Buscar (filtra por cédula)
-    public void Buscar(View view) {
-        String criterio = txtBuscarEmpleado.getText().toString();
+    // Método Buscar (filtra por idServicio o nombre)
+    public void BuscarServicio(View view) {
+        String criterio = txtBuscarServicio.getText().toString();
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
 
         datos.clear();
-        Cursor fila = db.rawQuery("SELECT * FROM Empleados WHERE cedula=?", new String[]{criterio});
+        Cursor fila = db.rawQuery("SELECT * FROM Servicio WHERE idServicio=? OR nombre=?", new String[]{criterio, criterio});
         if (fila.moveToFirst()) {
             do {
-                String cedula = fila.getString(0);
+                String idServicio = fila.getString(0);
                 String nombre = fila.getString(1);
-                String apellidos = fila.getString(2);
-                String puesto = fila.getString(5);
+                String precio = fila.getString(2);
 
-                String item = cedula + " - " + nombre + " " + apellidos + " (" + puesto + ")";
+                String item = idServicio + " - " + nombre + " (₡" + precio + ")";
                 adapter.add(item);
             } while (fila.moveToNext());
 
-            Toast.makeText(getApplicationContext(), "Empleado(s) encontrado(s)", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Servicio(s) encontrado(s)", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(getApplicationContext(), "No se encontraron registros", Toast.LENGTH_LONG).show();
         }
@@ -138,44 +138,41 @@ public class EmpleadoActivity extends AppCompatActivity {
         db.close();
     }
 
-    // 🔎 Método MostrarTodos (trae todos los empleados con SELECT *)
+    // Método MostrarTodos
     public void MostrarTodos(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
 
         datos.clear();
-        Cursor fila = db.rawQuery("SELECT * FROM Empleados", null);
+        Cursor fila = db.rawQuery("SELECT * FROM Servicio", null);
         if (fila.moveToFirst()) {
             do {
-                String cedula = fila.getString(0);
+                String idServicio = fila.getString(0);
                 String nombre = fila.getString(1);
-                String apellidos = fila.getString(2);
-                String puesto = fila.getString(5);
+                String precio = fila.getString(2);
 
-                String item = cedula + " - " + nombre + " " + apellidos + " (" + puesto + ")";
+                String item = idServicio + " - " + nombre + " (₡" + precio + ")";
                 adapter.add(item);
             } while (fila.moveToNext());
 
-            Toast.makeText(getApplicationContext(), "Todos los empleados cargados", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Todos los servicios cargados", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), "No hay empleados registrados", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "No hay servicios registrados", Toast.LENGTH_LONG).show();
         }
         fila.close();
         db.close();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         MostrarTodos(null); // recarga la lista automáticamente
     }
 
-
     // Botón regresar
-    public void regresar(View view) {
+    public void regresarServicio(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
-
-
 

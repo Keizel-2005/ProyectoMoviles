@@ -15,7 +15,13 @@
             android:name=".FacturaActivity"
             android:exported="false" />
         <activity
-            android:name=".ServicioActivity"
+            android:name=".Servicios.ServicioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Servicios.InsertServicio"
+            android:exported="false" />
+        <activity
+            android:name=".Servicios.UpdateServicio"
             android:exported="false" />
         <activity
             android:name=".Carros.CarroActivity"
@@ -32,6 +38,13 @@
         <activity
             android:name=".Empleado.UpdateEmpleado"
             android:exported="false" />
+        <activity
+            android:name=".Clientes.InsertCliente"
+            android:exported="false" />
+        <activity
+            android:name=".Clientes.UpdateCliente"
+            android:exported="false" />
+
 
         <activity
             android:name=".MainActivity"

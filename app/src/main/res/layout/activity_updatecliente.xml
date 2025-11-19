@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/txtCedulaCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Cédula"
+        android:enabled="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/txtNombreCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        app:layout_constraintTop_toBottomOf="@id/txtCedulaCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/txtApellidosCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Apellidos"
+        app:layout_constraintTop_toBottomOf="@id/txtNombreCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/txtTelefonoCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Teléfono"
+        android:inputType="phone"
+        app:layout_constraintTop_toBottomOf="@id/txtApellidosCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/txtCorreoCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Correo"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/txtTelefonoCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/btnActualizarCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="ActualizarCliente"
+        android:text="Actualizar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtCorreoCliente" />
+
+    <Button
+        android:id="@+id/btnRegresarCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="RegresarCliente"
+        android:text="Regresar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtCorreoCliente" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
