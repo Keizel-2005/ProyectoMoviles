@@ -25,22 +25,15 @@ public class EmpleadoActivity extends AppCompatActivity {
     ListView listViewEmpleados;
 
     ArrayAdapter<String> adapter;
-
     ArrayList<String> datos;
-
     int itemseleccionado = -1; // Posición seleccionada
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_empleado);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
         txtBuscarEmpleado = findViewById(R.id.txtBuscarEmpleado);
         listViewEmpleados = findViewById(R.id.listViewEmpleados);
 
@@ -48,7 +41,9 @@ public class EmpleadoActivity extends AppCompatActivity {
         datos = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, datos);
         listViewEmpleados.setAdapter(adapter);
-        listViewEmpleados.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+
+        // Evento de selección en la lista
+        listViewEmpleados.setOnItemClickListener((parent, view, position, id) -> {
             itemseleccionado = position;
             // Quita colores anteriores
             for (int i = 0; i < listViewEmpleados.getChildCount(); i++) {
@@ -57,20 +52,35 @@ public class EmpleadoActivity extends AppCompatActivity {
             // Resalta el nuevo seleccionado
             view.setBackgroundColor(Color.LTGRAY);
         });
-        // Consultar(null);
-
     }
 
+    // Botón Agregar
     public void Insertar(View view) {
         Intent intent = new Intent(this, InsertEmpleado.class);
-        startActivity(intent);
+        startActivity(intent); // 🔹 agregado
+    }
+    public void Update(View view) {
+        if (itemseleccionado >= 0) {
+            String item = adapter.getItem(itemseleccionado);
+            String cedula = item.split(" - ")[0]; // obtenemos la cédula
 
+            Intent intent = new Intent(this, UpdateEmpleado.class);
+            intent.putExtra("cedula", cedula); // pasamos la cédula seleccionada
+            startActivity(intent);
+        } else {
+            Toast.makeText(getApplicationContext(), "Debe seleccionar un empleado", Toast.LENGTH_SHORT).show();
+        }
     }
 
+
+    // Botón Eliminar
     public void Eliminar(View view) {
         if (itemseleccionado >= 0) {
-            EliminarPorCedula(adapter.getItem(itemseleccionado));
-            adapter.remove(adapter.getItem(itemseleccionado));
+            String item = adapter.getItem(itemseleccionado);
+            String cedula = item.split(" - ")[0]; // suponiendo formato "cedula - nombre"
+            EliminarPorCedula(cedula);
+
+            adapter.remove(item);
             // Restablece el color de fondo del elemento seleccionado
             View itemresaltado = listViewEmpleados.getChildAt(itemseleccionado);
             if (itemresaltado != null) {
@@ -81,13 +91,15 @@ public class EmpleadoActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Debe seleccionar un item", Toast.LENGTH_SHORT).show();
         }
     }
+
+    // Método para eliminar por cédula
     public void EliminarPorCedula(String cedula) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
-        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+        SQLiteDatabase db = admin.getWritableDatabase();
 
         if (!cedula.isEmpty()) {
-            int registrosEliminados = BaseDatos.delete("Empleados", "cedula=?", new String[]{cedula});
-            BaseDatos.close();
+            int registrosEliminados = db.delete("Empleados", "cedula=?", new String[]{cedula});
+            db.close();
 
             if (registrosEliminados > 0) {
                 Toast.makeText(getApplicationContext(), "Empleado eliminado correctamente", Toast.LENGTH_LONG).show();
@@ -97,15 +109,16 @@ public class EmpleadoActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Falta la cédula para eliminar", Toast.LENGTH_LONG).show();
         }
-
     }
+
+    //  Método Buscar (filtra por cédula)
     public void Buscar(View view) {
         String criterio = txtBuscarEmpleado.getText().toString();
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
 
         datos.clear();
-        Cursor fila = db.rawQuery("SELECT * FROM Empleados WHERE cedula=? OR nombre=?", new String[]{criterio, criterio});
+        Cursor fila = db.rawQuery("SELECT * FROM Empleados WHERE cedula=?", new String[]{criterio});
         if (fila.moveToFirst()) {
             do {
                 String cedula = fila.getString(0);
@@ -124,11 +137,45 @@ public class EmpleadoActivity extends AppCompatActivity {
         fila.close();
         db.close();
     }
+
+    // 🔎 Método MostrarTodos (trae todos los empleados con SELECT *)
+    public void MostrarTodos(View view) {
+        AdminBD admin = new AdminBD(this, "lavacar", null, 1);
+        SQLiteDatabase db = admin.getReadableDatabase();
+
+        datos.clear();
+        Cursor fila = db.rawQuery("SELECT * FROM Empleados", null);
+        if (fila.moveToFirst()) {
+            do {
+                String cedula = fila.getString(0);
+                String nombre = fila.getString(1);
+                String apellidos = fila.getString(2);
+                String puesto = fila.getString(5);
+
+                String item = cedula + " - " + nombre + " " + apellidos + " (" + puesto + ")";
+                adapter.add(item);
+            } while (fila.moveToNext());
+
+            Toast.makeText(getApplicationContext(), "Todos los empleados cargados", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "No hay empleados registrados", Toast.LENGTH_LONG).show();
+        }
+        fila.close();
+        db.close();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MostrarTodos(null); // recarga la lista automáticamente
+    }
+
+
+    // Botón regresar
     public void regresar(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
     }
 }
+
 
 

@@ -27,8 +27,16 @@
             android:name=".ClienteActivity"
             android:exported="false" />
         <activity
+            android:name=".InsertEmpleado"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateEmpleado"
+            android:exported="false" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
