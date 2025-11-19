@@ -54,13 +54,14 @@
     <ListView
         android:id="@+id/listViewDetalle"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="378dp"
         android:layout_weight="1"
-        android:dividerHeight="8dp"/>
+        android:dividerHeight="8dp" />
+
     <ImageButton
         android:id="@+id/btnSalirDetalle"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="139dp"
+        android:layout_height="359dp"
         android:layout_weight="1"
         android:background="@android:color/transparent"
         android:contentDescription="@string/cd_salir"
