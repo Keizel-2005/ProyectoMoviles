@@ -33,8 +33,6 @@ public class UpdateEmpleado extends AppCompatActivity {
 
         // Recibir la cédula desde EmpleadoActivity
         cedulaRecibida = getIntent().getStringExtra("cedula");
-
-        // Cargar datos del empleado
         cargarEmpleado();
     }
 
@@ -55,7 +53,6 @@ public class UpdateEmpleado extends AppCompatActivity {
         db.close();
     }
 
-    // Método OnClick para Actualizar
     public void Actualizar(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -90,7 +87,7 @@ public class UpdateEmpleado extends AppCompatActivity {
     }
 
 
-    public void REgresar(View view) {
+    public void REgresarListEmpLeado(View view) {
         Intent intent = new Intent(this, EmpleadoActivity.class);
         startActivity(intent);
         finish();

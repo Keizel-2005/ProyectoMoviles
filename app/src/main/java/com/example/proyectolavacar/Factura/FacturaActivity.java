@@ -54,14 +54,13 @@ public class FacturaActivity extends AppCompatActivity {
         });
     }
 
-    // Botón Agregar - abrir InsertFactura
+
     public void Insertar(View view) {
         Intent intent = new Intent(this, InsertFactura.class);
         startActivity(intent);
     }
 
 
-    // Botón Eliminar
     public void Eliminar(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
@@ -71,7 +70,6 @@ public class FacturaActivity extends AppCompatActivity {
 
             adapter.remove(item);
 
-            // restablecer color del item resaltado (si está visible)
             View itemresaltado = listViewFacturas.getChildAt(itemseleccionado);
             if (itemresaltado != null) {
                 itemresaltado.setBackgroundColor(0);
@@ -82,7 +80,6 @@ public class FacturaActivity extends AppCompatActivity {
         }
     }
 
-    // Método para eliminar por idFactura
     public void EliminarPorId(String idFactura) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -101,7 +98,6 @@ public class FacturaActivity extends AppCompatActivity {
         }
     }
 
-    // Botón Buscar (por idFactura)
     public void Buscar(View view) {
         String criterio = txtBuscarFactura.getText().toString();
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
@@ -129,7 +125,6 @@ public class FacturaActivity extends AppCompatActivity {
         db.close();
     }
 
-    // Mostrar todos los encabezados
     public void MostrarTodos(View view) {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
@@ -172,10 +167,10 @@ public class FacturaActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        MostrarTodos(null); // recarga la lista automáticamente
+        MostrarTodos(null);
     }
 
-    // Botón regresar
+
     public void regresar(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

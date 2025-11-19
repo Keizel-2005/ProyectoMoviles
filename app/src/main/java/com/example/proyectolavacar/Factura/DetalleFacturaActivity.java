@@ -52,7 +52,6 @@ public class DetalleFacturaActivity extends AppCompatActivity {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getReadableDatabase();
 
-        // Maestro
         Cursor cEnc = db.rawQuery("SELECT * FROM EncabezadoFactura WHERE idFactura=?", new String[]{idFactura});
         if (cEnc.moveToFirst()) {
             String fecha = cEnc.getString(1);
@@ -70,7 +69,6 @@ public class DetalleFacturaActivity extends AppCompatActivity {
         }
         cEnc.close();
 
-        // Detalles
         Cursor cDet = db.rawQuery(
                 "SELECT d.idServicio, s.nombre, d.precio FROM DetalleFactura d INNER JOIN Servicio s ON d.idServicio=s.idServicio WHERE d.idFactura=?",
                 new String[]{idFactura});
@@ -88,7 +86,6 @@ public class DetalleFacturaActivity extends AppCompatActivity {
         cDet.close();
         db.close();
 
-        // mostrar detalles con SimpleAdapter
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
                 lista,

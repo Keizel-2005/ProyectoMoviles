@@ -50,7 +50,6 @@ public class InsertFactura extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_insertfactura);
 
-        // maestro
         txtCedulaCliente = findViewById(R.id.txtCedulaCliente);
         txtCedulaEmpleado = findViewById(R.id.txtCedulaEmpleado);
         txtPlacaCarro = findViewById(R.id.txtPlacaCarro);
@@ -62,7 +61,7 @@ public class InsertFactura extends AppCompatActivity {
         btnBuscarEmpleado = findViewById(R.id.btnBuscarEmpleado);
         btnBuscarCarro = findViewById(R.id.btnBuscarCarro);
 
-        // detalle
+
         txtIdServicio = findViewById(R.id.txtIdServicio);
         txtCantidad = findViewById(R.id.txtCantidad);
         txtPrecio = findViewById(R.id.txtPrecio);
@@ -77,18 +76,13 @@ public class InsertFactura extends AppCompatActivity {
 
         listViewDetalles.setOnItemClickListener((parent, view, position, id) -> {
             itemseleccionado = position;
-            // quitar colores visibles (igual que tu patrón)
             for (int i = 0; i < listViewDetalles.getChildCount(); i++) {
                 listViewDetalles.getChildAt(i).setBackgroundColor(0);
             }
             view.setBackgroundColor(0xFFDDDDDD);
         });
 
-        // cuando cambia cantidad o precio, actualizar subtotal visual (no automático, queda manual en este estilo)
-        // (seguí tu estilo: acciones a través de botones, no TextWatchers)
     }
-
-    // ====== BÚSQUEDAS (muestran nombre/descr según código) ======
 
     public void BuscarCliente(View view) {
         String cedula = txtCedulaCliente.getText().toString();
@@ -183,7 +177,6 @@ public class InsertFactura extends AppCompatActivity {
             tvNombreServicio.setText(nombre);
             txtPrecio.setText(precio);
             Toast.makeText(this, "Servicio encontrado", Toast.LENGTH_SHORT).show();
-            // actualizar subtotal visual si cantidad ya existe
             String cantidadStr = txtCantidad.getText().toString();
             double cant = 0;
             try { cant = Double.parseDouble(cantidadStr); } catch (Exception e) { cant = 0; }
@@ -200,7 +193,6 @@ public class InsertFactura extends AppCompatActivity {
         db.close();
     }
 
-    // ====== DETALLE: Agregar / Editar / Eliminar en ListView ======
 
     public void AgregarDetalle(View view) {
         String idServicio = txtIdServicio.getText().toString();
@@ -219,13 +211,11 @@ public class InsertFactura extends AppCompatActivity {
         try { precio = Double.parseDouble(precioStr); } catch (Exception e) { precio = 0; }
         double subtotal = cantidad * precio;
 
-        // formato mostrado en el ListView (igual estilo al resto)
         String item = idServicio + " - " + nombreServicio + " x" + cantidad + " (subtotal: " + (int)subtotal + ")";
         adapterDetalles.add(item);
 
         totalFactura += subtotal;
 
-        // limpiar campos de detalle (estilo simple)
         txtIdServicio.setText("");
         tvNombreServicio.setText("");
         txtCantidad.setText("");
@@ -238,25 +228,19 @@ public class InsertFactura extends AppCompatActivity {
     public void EditarDetalle(View view) {
         if (itemseleccionado >= 0) {
             String item = adapterDetalles.getItem(itemseleccionado);
-            // parsear item con el mismo formato: "id - nombre xN (subtotal: S)"
-            // simple split para rellenar campos
             try {
                 String[] parts = item.split(" - ");
                 String id = parts[0];
                 String right = parts[1];
                 String nombre = right.split(" x")[0];
-                String afterX = right.split(" x")[1]; // "N (subtotal: S)"
+                String afterX = right.split(" x")[1];
                 String cantidadStr = afterX.split(" ")[0];
-                // precio no está en el string; requerimos buscar servicio para recuperar precio
                 txtIdServicio.setText(id);
                 txtCantidad.setText(cantidadStr);
-                // buscar el servicio para llenar nombre y precio
                 txtPrecio.setText("");
                 tvNombreServicio.setText(nombre);
             } catch (Exception e) {
-                // no hacer nada complejo; mantener minimal
             }
-            // quitar color y resetear selección (igual estilo)
             listViewDetalles.getChildAt(itemseleccionado).setBackgroundColor(0);
             itemseleccionado = -1;
         } else {
@@ -272,7 +256,6 @@ public class InsertFactura extends AppCompatActivity {
             listViewDetalles.getChildAt(itemseleccionado).setBackgroundColor(0);
             itemseleccionado = -1;
             Toast.makeText(this, "Detalle eliminado", Toast.LENGTH_SHORT).show();
-            // recalcular total (simple: recalcular desde todos los items)
             recalcularTotalDesdeAdapter();
         } else {
             Toast.makeText(this, "Debe seleccionar un detalle", Toast.LENGTH_SHORT).show();
@@ -283,7 +266,6 @@ public class InsertFactura extends AppCompatActivity {
         totalFactura = 0;
         for (int i = 0; i < adapterDetalles.getCount(); i++) {
             String item = adapterDetalles.getItem(i);
-            // parsear subtotal: buscar "(subtotal: S)"
             try {
                 String s = item;
                 int idx = s.indexOf("(subtotal:");
@@ -292,15 +274,13 @@ public class InsertFactura extends AppCompatActivity {
                     double sub = Double.parseDouble(right);
                     totalFactura += sub;
                 }
-            } catch (Exception e) { /* ignore */ }
+            } catch (Exception e) { }
         }
     }
 
-    // ====== GUARDAR MAESTRO + DETALLE en BD ======
 
     public void GuardarFactura(View view) {
 
-        // validaciones de maestro
         String cedulaCliente = txtCedulaCliente.getText().toString();
         String cedulaEmpleado = txtCedulaEmpleado.getText().toString();
         String placa = txtPlacaCarro.getText().toString();
@@ -313,7 +293,6 @@ public class InsertFactura extends AppCompatActivity {
         AdminBD admin = new AdminBD(this, "lavacar", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
-        // validar cliente
         Cursor cCliente = db.rawQuery("SELECT cedula FROM Cliente WHERE cedula=?", new String[]{cedulaCliente});
         if (!cCliente.moveToFirst()) {
             cCliente.close();
@@ -323,7 +302,6 @@ public class InsertFactura extends AppCompatActivity {
         }
         cCliente.close();
 
-        // validar empleado
         Cursor cEmpleado = db.rawQuery("SELECT cedula FROM Empleados WHERE cedula=?", new String[]{cedulaEmpleado});
         if (!cEmpleado.moveToFirst()) {
             cEmpleado.close();
@@ -333,7 +311,6 @@ public class InsertFactura extends AppCompatActivity {
         }
         cEmpleado.close();
 
-        // validar placa carro
         Cursor cCarro = db.rawQuery("SELECT placa FROM Carro WHERE placa=?", new String[]{placa});
         if (!cCarro.moveToFirst()) {
             cCarro.close();
@@ -343,19 +320,15 @@ public class InsertFactura extends AppCompatActivity {
         }
         cCarro.close();
 
-        // validar que exista al menos 1 detalle
         if (adapterDetalles.getCount() == 0) {
             db.close();
             Toast.makeText(this, "Agregue al menos un detalle", Toast.LENGTH_LONG).show();
             return;
         }
 
-        // calcular total (ya en memoria pero recalcular por si acaso)
         recalcularTotalDesdeAdapter();
 
-        // insertar EncabezadoFactura
         ContentValues regEnc = new ContentValues();
-        // fecha automática del sistema
         String fecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
         regEnc.put("fecha", fecha);
         regEnc.put("cedulaCliente", cedulaCliente);
@@ -385,18 +358,15 @@ public class InsertFactura extends AppCompatActivity {
                 ContentValues regDet = new ContentValues();
                 regDet.put("idFactura", idEnc);
                 regDet.put("idServicio", idPart);
-                // guardamos el subtotal en precio porque así está la tabla DetalleFactura
                 regDet.put("precio", (int) Double.parseDouble(subs));
                 db.insert("DetalleFactura", null, regDet);
             } catch (Exception e) {
-                // continuar con siguiente
             }
         }
 
         db.close();
         Toast.makeText(this, "Factura guardada correctamente", Toast.LENGTH_LONG).show();
 
-        // limpiar todo y volver al main (misma costumbre en tu app)
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

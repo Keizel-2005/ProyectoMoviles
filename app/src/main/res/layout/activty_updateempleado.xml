@@ -64,13 +64,14 @@
         android:onClick="Actualizar"
         app:layout_constraintTop_toBottomOf="@id/txtPuesto"
         app:layout_constraintStart_toStartOf="parent"/>
+
     <Button
         android:id="@+id/btnRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="REgresarListEmpLeado"
         android:text="@string/btn_regresar"
-        android:onClick="Regresar"
-        app:layout_constraintTop_toBottomOf="@id/txtPuesto"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtPuesto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
