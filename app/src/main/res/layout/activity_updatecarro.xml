@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+
+    <EditText
+        android:id="@+id/txtPlaca"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Placa"
+        android:enabled="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <EditText
+        android:id="@+id/txtModelo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Modelo"
+        app:layout_constraintTop_toBottomOf="@id/txtPlaca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <EditText
+        android:id="@+id/txtAnio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Año"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/txtModelo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <EditText
+        android:id="@+id/txtCedulaCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Cédula Cliente"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/txtAnio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btnActualizarCarro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        android:onClick="Actualizar"
+        app:layout_constraintTop_toBottomOf="@id/txtCedulaCliente"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btnRegresarCarro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Regresar"
+        android:onClick="Regresar"
+        app:layout_constraintTop_toBottomOf="@id/txtCedulaCliente"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

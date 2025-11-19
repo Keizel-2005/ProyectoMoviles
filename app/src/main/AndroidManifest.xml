@@ -44,6 +44,12 @@
         <activity
             android:name=".Clientes.UpdateCliente"
             android:exported="false" />
+        <activity
+            android:name=".Carros.InsertCarro"
+            android:exported="false" />
+        <activity
+            android:name=".Carros.UpdateCarro"
+            android:exported="false" />
 
 
         <activity

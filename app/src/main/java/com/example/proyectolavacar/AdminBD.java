@@ -23,7 +23,7 @@ public class AdminBD extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE Servicio (idServicio INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, precio INTEGER)");
 
-        db.execSQL("CREATE TABLE Carro (placa TEXT PRIMARY KEY, modelo TEXT, anio INTEGER, cedulaCliente TEXT, cedulaEmpleado TEXT, FOREIGN KEY(cedulaCliente) REFERENCES Cliente(cedula))");
+        db.execSQL("CREATE TABLE Carro (placa TEXT PRIMARY KEY, modelo TEXT, anio INTEGER, cedulaCliente TEXT, FOREIGN KEY(cedulaCliente) REFERENCES Cliente(cedula))");
 
         db.execSQL("CREATE TABLE EncabezadoFactura (idFactura INTEGER PRIMARY KEY AUTOINCREMENT, fecha TEXT, cedulaCliente TEXT, placaCarro INTEGER, cedulaEmpleado TEXT, total INTEGER, FOREIGN KEY(cedulaCliente) REFERENCES Cliente(cedula), FOREIGN KEY(placaCarro) REFERENCES Carro(placa), FOREIGN KEY(cedulaEmpleado) REFERENCES Empleados(cedula))");
 

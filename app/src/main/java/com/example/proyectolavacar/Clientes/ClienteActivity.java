@@ -157,7 +157,7 @@ public class ClienteActivity extends AppCompatActivity {
                 String nombre = fila.getString(1);
                 String apellidos = fila.getString(2);
                 String correo = fila.getString(3);
-                String telefono = fila.getString(3);
+                String telefono = fila.getString(4);
 
 
                 String item = cedula + " - " + nombre + " " + apellidos  + " - " + correo+ " - " + telefono ;

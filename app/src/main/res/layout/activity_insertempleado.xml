@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
-    <!-- Campo Cédula -->
-
-    <!-- Campo Nombre -->
-
-    <!-- Campo Apellidos -->
-
-    <!-- Campo Teléfono -->
-
-    <!-- Campo Correo -->
-
-    <!-- Campo Puesto -->
-
-    <!-- Botón Guardar -->
-
-    <!-- Botón Regresar -->
-
     <EditText
         android:id="@+id/txtCedula"
         android:layout_width="0dp"
