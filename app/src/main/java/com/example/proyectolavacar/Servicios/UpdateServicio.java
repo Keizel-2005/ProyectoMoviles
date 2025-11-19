@@ -30,7 +30,8 @@ public class UpdateServicio extends AppCompatActivity {
         txtPrecio = findViewById(R.id.txtPrecioServicio);
 
         // Recibir el idServicio desde ServicioActivity
-        idServicioRecibido = getIntent().getStringExtra("idServicio");
+        idServicioRecibido = String.valueOf(getIntent().getIntExtra("idServicio", -1));
+
 
         // Cargar datos del servicio
         cargarServicio();

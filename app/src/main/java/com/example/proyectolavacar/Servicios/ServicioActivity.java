@@ -65,11 +65,11 @@ public class ServicioActivity extends AppCompatActivity {
     public void UpdateServicio(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
-            String idServicio = item.split(" - ")[0]; // obtenemos el id
-
+            String idServicio = item.split(" - ")[0].trim();
             Intent intent = new Intent(this, UpdateServicio.class);
-            intent.putExtra("idServicio", idServicio); // pasamos el id seleccionado
+            intent.putExtra("idServicio", Integer.parseInt(idServicio));
             startActivity(intent);
+
         } else {
             Toast.makeText(getApplicationContext(), "Debe seleccionar un servicio", Toast.LENGTH_SHORT).show();
         }
