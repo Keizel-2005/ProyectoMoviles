@@ -23,11 +23,11 @@ public class AdminBD extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE Servicio (idServicio INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, precio INTEGER)");
 
-        db.execSQL("CREATE TABLE Carro (placa TEXT PRIMARY KEY, modelo TEXT, anio INTEGER, cedulaCliente TEXT, cedulaEmpleado TEXT, FOREIGN KEY(cedulaCliente) REFERENCES Cliente(cedula), FOREIGN KEY(cedulaEmpleado) REFERENCES Empleados(cedula))");
+        db.execSQL("CREATE TABLE Carro (placa TEXT PRIMARY KEY, modelo TEXT, anio INTEGER, cedulaCliente TEXT, cedulaEmpleado TEXT, FOREIGN KEY(cedulaCliente) REFERENCES Cliente(cedula))");
 
         db.execSQL("CREATE TABLE EncabezadoFactura (idFactura INTEGER PRIMARY KEY AUTOINCREMENT, fecha TEXT, cedulaCliente TEXT, placaCarro INTEGER, cedulaEmpleado TEXT, total INTEGER, FOREIGN KEY(cedulaCliente) REFERENCES Cliente(cedula), FOREIGN KEY(placaCarro) REFERENCES Carro(placa), FOREIGN KEY(cedulaEmpleado) REFERENCES Empleados(cedula))");
 
-        db.execSQL("CREATE TABLE DetalleFactura (idDetalle INTEGER PRIMARY KEY AUTOINCREMENT, idFactura INTEGER, idServicio INTEGER, cantidad INTEGER, precio DECIMAL, subtotal DECIMAL, FOREIGN KEY(idFactura) REFERENCES EncabezadoFactura(idFactura), FOREIGN KEY(idServicio) REFERENCES Servicio(idServicio))");
+        db.execSQL("CREATE TABLE DetalleFactura (idDetalle INTEGER PRIMARY KEY AUTOINCREMENT, idFactura INTEGER, idServicio INTEGER,  precio DECIMAL, FOREIGN KEY(idFactura) REFERENCES EncabezadoFactura(idFactura), FOREIGN KEY(idServicio) REFERENCES Servicio(idServicio))");
     }
 
     @Override
