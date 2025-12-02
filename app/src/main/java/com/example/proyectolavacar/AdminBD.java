@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class AdminBD extends SQLiteOpenHelper {
 
     public AdminBD(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+        super(context, name, factory, 2);
     }
 
     @Override
@@ -17,7 +17,7 @@ public class AdminBD extends SQLiteOpenHelper {
 
         db.execSQL("PRAGMA foreign_keys=ON");
 
-        db.execSQL("CREATE TABLE Cliente (cedula TEXT PRIMARY KEY, nombre TEXT, apellidos TEXT, telefono TEXT, correo TEXT)");
+        db.execSQL("CREATE TABLE Cliente (cedula TEXT PRIMARY KEY, nombre TEXT, apellidos TEXT, telefono TEXT, correo TEXT, foto BLOB, audio BLOB)");
 
         db.execSQL("CREATE TABLE Empleados (cedula TEXT PRIMARY KEY, nombre TEXT, apellidos TEXT, telefono TEXT, correo TEXT, puesto TEXT)");
 

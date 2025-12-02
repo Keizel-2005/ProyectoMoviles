@@ -31,7 +31,6 @@ public class ClienteActivity extends AppCompatActivity {
     ArrayList<String> datos;
     int itemseleccionado = -1; // Posición seleccionada
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,23 +60,24 @@ public class ClienteActivity extends AppCompatActivity {
             view.setBackgroundColor(Color.LTGRAY);
         });
     }
+
     public void InsertarCliente(View view) {
         Intent intent = new Intent(this, InsertCliente.class);
         startActivity(intent);
     }
+
     public void UpdateCliente(View view) {
         if (itemseleccionado >= 0) {
             String item = adapter.getItem(itemseleccionado);
-            String cedula = item.split(" - ")[0]; // obtenemos la cédula
+            String cedula = item.split(" - ")[0];
 
             Intent intent = new Intent(this, UpdateCliente.class);
-            intent.putExtra("cedula", cedula); // pasamos la cédula seleccionada
+            intent.putExtra("cedula", cedula);
             startActivity(intent);
         } else {
             Toast.makeText(getApplicationContext(), "Debe seleccionar un Cliente", Toast.LENGTH_SHORT).show();
         }
     }
-
 
     public void EliminarCliente(View view) {
         if (itemseleccionado >= 0) {
@@ -97,7 +97,7 @@ public class ClienteActivity extends AppCompatActivity {
     }
 
     public void EliminarPorCedula(String cedula) {
-        AdminBD admin = new AdminBD(this, "lavacar", null, 1);
+        AdminBD admin = new AdminBD(this, "lavacar", null, 2);  // Cambiado a 2
         SQLiteDatabase db = admin.getWritableDatabase();
 
         if (!cedula.isEmpty()) {
@@ -116,7 +116,7 @@ public class ClienteActivity extends AppCompatActivity {
 
     public void BuscarCliente(View view) {
         String criterio = txtBuscarCliente.getText().toString();
-        AdminBD admin = new AdminBD(this, "lavacar", null, 1);
+        AdminBD admin = new AdminBD(this, "lavacar", null, 2);  // Cambiado a 2
         SQLiteDatabase db = admin.getReadableDatabase();
 
         datos.clear();
@@ -137,10 +137,11 @@ public class ClienteActivity extends AppCompatActivity {
         }
         fila.close();
         db.close();
+        adapter.notifyDataSetChanged();  // Refresca la lista
     }
 
     public void MostrarTodos(View view) {
-        AdminBD admin = new AdminBD(this, "lavacar", null, 1);
+        AdminBD admin = new AdminBD(this, "lavacar", null, 2);
         SQLiteDatabase db = admin.getReadableDatabase();
 
         datos.clear();
@@ -153,8 +154,7 @@ public class ClienteActivity extends AppCompatActivity {
                 String correo = fila.getString(3);
                 String telefono = fila.getString(4);
 
-
-                String item = cedula + " - " + nombre + " " + apellidos  + " - " + correo+ " - " + telefono ;
+                String item = cedula + " - " + nombre + " " + apellidos + " - " + correo + " - " + telefono;
                 adapter.add(item);
             } while (fila.moveToNext());
 
@@ -164,18 +164,17 @@ public class ClienteActivity extends AppCompatActivity {
         }
         fila.close();
         db.close();
+        adapter.notifyDataSetChanged();  // Refresca la lista
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         MostrarTodos(null);
     }
 
-
     public void regresarcliente(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-
-    }
+}

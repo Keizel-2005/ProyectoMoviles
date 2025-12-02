@@ -47,6 +47,6 @@
     <string name="info_nombre_servicio">Service Name</string>
     <string name="hint_cantidad">Quantity</string>
     <string name="info_subtotal">Subtotal: 0</string>
-
     <string name="btn_guardar_factura">Save Invoice</string>
+    <string name="btn_tomarfoto">Take Photo</string>
 </resources>

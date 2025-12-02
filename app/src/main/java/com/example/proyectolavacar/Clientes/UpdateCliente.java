@@ -1,28 +1,72 @@
 package com.example.proyectolavacar.Clientes;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.proyectolavacar.AdminBD;
 import com.example.proyectolavacar.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class UpdateCliente extends AppCompatActivity {
 
     EditText txtCedula, txtNombre, txtApellidos, txtTelefono, txtCorreo;
+    ImageView imageViewFoto;
+    Button btnTomarFoto, btnIniciarGrabacion, btnDetenerGrabacion, btnIniciarReproduccion, btnDetenerReproduccion;
     String cedulaRecibida;
+
+    private ActivityResultLauncher<Intent> lanzadorTomarFoto;
+    private Bitmap imagenBitmap;
+
+    private AdminBD admin;
+    private SQLiteDatabase db;
+    private MediaRecorder mediaRecorder;
+    private MediaPlayer mediaPlayer;
+    private String outputFile;
+
+    private static final int REQUEST_PERMISSION_CODE = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_updatecliente); // 🔹 asegúrate que el XML se llame así
+        setContentView(R.layout.activity_updatecliente);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
 
         txtCedula = findViewById(R.id.txtCedulaCliente);
         txtNombre = findViewById(R.id.txtNombreCliente);
@@ -30,55 +74,188 @@ public class UpdateCliente extends AppCompatActivity {
         txtTelefono = findViewById(R.id.txtTelefonoCliente);
         txtCorreo = findViewById(R.id.txtCorreoCliente);
 
-        // Recibir la cédula desde ClienteActivity
+
+        imageViewFoto = findViewById(R.id.imageViewFoto);
+        btnTomarFoto = findViewById(R.id.btnTomarFoto);
+        btnIniciarGrabacion = findViewById(R.id.btnIniciarGrabacion);
+        btnDetenerGrabacion = findViewById(R.id.btnDetenerGrabacion);
+        btnIniciarReproduccion = findViewById(R.id.btnIniciarReproduccion);
+        btnDetenerReproduccion = findViewById(R.id.btnDetenerReproduccion);
+
+        // Recibir cédula
         cedulaRecibida = getIntent().getStringExtra("cedula");
+        if (cedulaRecibida == null) {
+            Toast.makeText(this, "Error: No se recibió cédula", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        admin = new AdminBD(this, "lavacar", null, 2);
+        db = admin.getWritableDatabase();
+
+        // Permisos
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, REQUEST_PERMISSION_CODE);
+        }
+
+        // Launcher foto
+        lanzadorTomarFoto = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                resultado -> {
+                    if (resultado.getResultCode() == RESULT_OK && resultado.getData() != null) {
+                        imagenBitmap = (Bitmap) resultado.getData().getExtras().get("data");
+                        imageViewFoto.setImageBitmap(imagenBitmap);
+                    }
+                }
+        );
+
+        // Audio setup
+        outputFile = getExternalFilesDir(null).getAbsolutePath() + "/temp_edit.3gp";  // Temp file para edit
+        mediaRecorder = new MediaRecorder();
+        mediaPlayer = new MediaPlayer();
+
+        // Cargar datos
         cargarCliente();
     }
 
     private void cargarCliente() {
-        AdminBD admin = new AdminBD(this, "lavacar", null, 1);
-        SQLiteDatabase db = admin.getReadableDatabase();
+        SQLiteDatabase dbRead = admin.getReadableDatabase();
+        Cursor fila = dbRead.rawQuery("SELECT * FROM Cliente WHERE cedula=?", new String[]{cedulaRecibida});
 
-        Cursor fila = db.rawQuery("SELECT * FROM Cliente WHERE cedula=?", new String[]{cedulaRecibida});
         if (fila.moveToFirst()) {
             txtCedula.setText(fila.getString(0));
             txtNombre.setText(fila.getString(1));
             txtApellidos.setText(fila.getString(2));
             txtTelefono.setText(fila.getString(3));
             txtCorreo.setText(fila.getString(4));
-        }
-        fila.close();
-        db.close();
-    }
 
-    public void ActualizarCliente(View view) {
-        AdminBD admin = new AdminBD(this, "lavacar", null, 1);
-        SQLiteDatabase db = admin.getWritableDatabase();
+            // Recuperar foto BLOB
+            byte[] fotoBytes = fila.getBlob(5);
+            if (fotoBytes != null) {
+                imagenBitmap = BitmapFactory.decodeByteArray(fotoBytes, 0, fotoBytes.length);
+                imageViewFoto.setImageBitmap(imagenBitmap);
+            }
 
-        String cedula = txtCedula.getText().toString();
-        String nombre = txtNombre.getText().toString();
-        String apellidos = txtApellidos.getText().toString();
-        String telefono = txtTelefono.getText().toString();
-        String correo = txtCorreo.getText().toString();
-
-        if (!cedula.isEmpty() && !nombre.isEmpty() && !apellidos.isEmpty()) {
-            ContentValues registro = new ContentValues();
-            registro.put("nombre", nombre);
-            registro.put("apellidos", apellidos);
-            registro.put("telefono", telefono);
-            registro.put("correo", correo);
-
-            int filasAfectadas = db.update("Cliente", registro, "cedula=?", new String[]{cedulaRecibida});
-            db.close();
-
-            if (filasAfectadas > 0) {
-                Toast.makeText(this, "Cliente actualizado correctamente", Toast.LENGTH_LONG).show();
-                finish(); // volver a la lista
-            } else {
-                Toast.makeText(this, "No se pudo actualizar", Toast.LENGTH_LONG).show();
+            // Recuperar audio BLOB y escribir a temp file para reproducir
+            byte[] audioBytes = fila.getBlob(6);
+            if (audioBytes != null) {
+                try {
+                    FileOutputStream fos = new FileOutputStream(outputFile);
+                    fos.write(audioBytes);
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, "Error al cargar audio", Toast.LENGTH_SHORT).show();
+                }
             }
         } else {
-            Toast.makeText(this, "Debe llenar al menos cédula, nombre y apellidos", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Cliente no encontrado", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        fila.close();
+        dbRead.close();
+    }
+
+    public void tomarFoto(View view) {
+        Intent intentTomarFoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        lanzadorTomarFoto.launch(intentTomarFoto);
+    }
+
+    public void iniciarGrabacion(View view) {
+        try {
+            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+            mediaRecorder.setOutputFile(outputFile);
+            mediaRecorder.prepare();
+            mediaRecorder.start();
+            Toast.makeText(this, "La grabación comenzó", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void detenerGrabacion(View view) {
+        if (mediaRecorder != null) {
+            try {
+                mediaRecorder.stop();
+                mediaRecorder.reset();
+                Toast.makeText(this, "El audio se grabó con éxito", Toast.LENGTH_SHORT).show();
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void iniciarReproduccion(View view) {
+        try {
+            mediaPlayer.setDataSource(outputFile);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+            Toast.makeText(this, "Reproducción de audio", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void detenerReproduccion(View view) {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+            Toast.makeText(this, "Reproducción de audio detenida", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Método para actualizar (expandido con foto y audio)
+    public void ActualizarCliente(View view) {
+        String cedula = txtCedula.getText().toString().trim();
+        String nombre = txtNombre.getText().toString().trim();
+        String apellidos = txtApellidos.getText().toString().trim();
+        String telefono = txtTelefono.getText().toString().trim();
+        String correo = txtCorreo.getText().toString().trim();
+
+        if (cedula.isEmpty() || nombre.isEmpty() || apellidos.isEmpty() || telefono.isEmpty() || correo.isEmpty()) {
+            Toast.makeText(this, "Debe llenar al menos cédula, nombre, apellidos, teléfono y correo", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        ContentValues registro = new ContentValues();
+        registro.put("nombre", nombre);
+        registro.put("apellidos", apellidos);
+        registro.put("telefono", telefono);
+        registro.put("correo", correo);
+
+        // Actualizar foto solo si hay nueva
+        if (imagenBitmap != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            imagenBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            registro.put("foto", stream.toByteArray());
+        }
+
+        // Actualizar audio solo si hay nuevo file
+        File audioFile = new File(outputFile);
+        if (audioFile.exists() && audioFile.length() > 0) {
+            byte[] audioData = new byte[(int) audioFile.length()];
+            try {
+                FileInputStream fis = new FileInputStream(audioFile);
+                fis.read(audioData);
+                fis.close();
+                registro.put("audio", audioData);
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Error al leer audio", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
+        int filasAfectadas = db.update("Cliente", registro, "cedula=?", new String[]{cedulaRecibida});
+        if (filasAfectadas > 0) {
+            Toast.makeText(this, "Cliente actualizado correctamente", Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            Toast.makeText(this, "No se pudo actualizar", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -86,5 +263,19 @@ public class UpdateCliente extends AppCompatActivity {
         Intent intent = new Intent(this, ClienteActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaRecorder != null) {
+            mediaRecorder.release();
+        }
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+        }
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
     }
 }

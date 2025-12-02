@@ -48,4 +48,5 @@
     <string name="hint_cantidad">Cantidad</string>
     <string name="info_subtotal">Subtotal: 0</string>
     <string name="btn_guardar_factura">Guardar Factura</string>
+    <string name="btn_tomarfoto">Tomar Foto</string>
 </resources>
