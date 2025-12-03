@@ -17,7 +17,7 @@ public class AdminBD extends SQLiteOpenHelper {
 
         db.execSQL("PRAGMA foreign_keys=ON");
 
-        db.execSQL("CREATE TABLE Cliente (cedula TEXT PRIMARY KEY, nombre TEXT, apellidos TEXT, telefono TEXT, correo TEXT, foto BLOB, audio BLOB)");
+        db.execSQL("CREATE TABLE Cliente (cedula TEXT PRIMARY KEY, nombre TEXT, apellidos TEXT, telefono TEXT, correo TEXT, foto BLOB, audio BLOB,latitud REAL,longitud REAL)");
 
         db.execSQL("CREATE TABLE Empleados (cedula TEXT PRIMARY KEY, nombre TEXT, apellidos TEXT, telefono TEXT, correo TEXT, puesto TEXT)");
 
