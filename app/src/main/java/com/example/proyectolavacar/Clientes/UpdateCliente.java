@@ -283,7 +283,7 @@ public class UpdateCliente extends AppCompatActivity {
         registro.put("longitud", longitudCliente);
 
         // AUDIO
-        File audioFile = new File(outputFile);
+       File audioFile = new File(outputFile);
         if (audioFile.exists() && audioFile.length() > 0) {
             try {
                 byte[] audioData = new byte[(int) audioFile.length()];
